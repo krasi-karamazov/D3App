@@ -1,0 +1,86 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:radioButtonStyle">@style/RadioButton</item>
+        <item name="android:editTextStyle">@style/D3EditText</item>
+        <item name="android:buttonStyle">@style/D3AppButton</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="D3StatsTextStyleBoldBig">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleBoldSmall">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleSkill">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleRune">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleNormalBig">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleNormalSmall">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleNormalExtraSmall">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    
+    <style name="D3StatsTextStyleNormalExtraSmallClass">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    
+    <style name="D3EditText" parent="@android:style/Widget.EditText">
+       	<item name="android:background">@drawable/edit_text_background</item>
+       	<item name="android:textColor">@android:color/white</item>
+       	<item name="android:padding">3dp</item>
+    </style>
+    
+    <style name="D3AppButton">
+        <item name="android:background">@drawable/d3app_button</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:width">120dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="RadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+   		<item name="android:button">@null</item>
+   		<item name="android:textSize">12sp</item>
+   		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+</resources>

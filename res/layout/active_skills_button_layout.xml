@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/active_skill_button"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+        android:background="@drawable/active_skill_button_background" />
+
+    <ImageView
+        android:id="@+id/skill_icon"
+        android:layout_width="42dp" android:layout_height="42dp"
+        android:layout_alignLeft="@+id/active_skill_button" android:layout_alignParentTop="true"
+        android:layout_marginLeft="17dp" android:layout_marginTop="16dp"
+        android:src="@android:drawable/ic_delete" />
+
+    <TextView
+        android:id="@+id/skill_name"
+        android:layout_width="160dp" android:layout_height="18dp"
+        android:layout_alignTop="@+id/skill_icon" android:layout_toRightOf="@+id/skill_icon"
+        android:layout_marginLeft="15dp"
+        style="@style/D3StatsTextStyleSkill"
+        android:text="skills" />
+
+    <ImageView
+        android:id="@+id/rune_image"
+        android:layout_width="18dp" android:layout_height="18dp"
+        android:layout_below="@+id/skill_name" android:layout_toRightOf="@+id/skill_icon"
+        android:layout_marginLeft="15dp" android:layout_marginTop="3dp"
+        android:src="@android:drawable/arrow_up_float"/>
+    
+    <TextView
+        android:id="@+id/rune_name"
+        android:layout_width="160dp" android:layout_height="18dp"
+        android:layout_below="@+id/skill_name" android:layout_toRightOf="@+id/rune_image"
+        android:layout_marginLeft="3dp" android:layout_marginTop="3dp"
+        style="@style/D3StatsTextStyleRune"
+        android:text="skills" />
+    
+    <TextView
+        android:id="@+id/skill_category_number"
+        style="@style/D3StatsTextStyleSkill"
+        android:layout_width="18dp" android:layout_height="18dp"
+        android:layout_below="@+id/rune_name" android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal|top"
+        android:text="1"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>

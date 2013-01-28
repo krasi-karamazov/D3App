@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="active_skill_styleable">
+        <attr name="skill_number" format="integer"/>
+        <attr name="skill_icon" format="integer"/>
+    </declare-styleable>
+</resources>

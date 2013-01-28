@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="3dp"
+    android:orientation="vertical" 
+    android:background="@drawable/profile_list_item_drawable">
+    
+    <ImageView 
+        android:id="@+id/portrait_last_hero_played"
+        android:layout_width="wrap_content" android:layout_height="match_parent"
+        android:scaleType="fitCenter" android:minHeight="64dp" android:minWidth="64dp"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true" android:background="@drawable/portrait_frame"/>
+	
+    <LinearLayout
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/portrait_last_hero_played" android:layout_marginLeft="10dp"
+         android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <TextView 
+            android:id="@+id/server_region_label"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            style="@style/D3StatsTextStyleNormalExtraSmall"
+            />
+        <TextView 
+            android:id="@+id/battle_tag_label"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            style="@style/D3StatsTextStyleNormalSmall"/>
+        <TextView 
+            android:id="@+id/last_updated_label"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            style="@style/D3StatsTextStyleNormalExtraSmall"/>
+    </LinearLayout>
+    
+</RelativeLayout>

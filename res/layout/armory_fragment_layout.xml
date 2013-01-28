@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/armory_container"
+        android:layout_width="match_parent" android:layout_height="match_parent" 
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/equipment_image"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+		
+        <RelativeLayout 
+            android:id="@+id/head"
+            android:layout_width="64dp" android:layout_height="64dp"
+            android:layout_alignTop="@+id/equipment_image" android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/head_image"
+            	android:layout_width="match_parent" android:layout_height="match_parent"    	
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:id="@+id/gem1_head_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_head"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/gem2_head_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_head"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/shoulders"
+            android:layout_width="66dp" android:layout_height="88dp"
+            android:layout_alignTop="@+id/head" android:layout_toLeftOf="@+id/head"
+            android:layout_marginRight="16dp" android:layout_marginTop="20dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/shoulders_image"
+            	android:layout_width="66dp" android:layout_height="88dp"
+                android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_shoulders_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_shoulders"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem2_shoulders_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_shoulders"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/torso"
+            android:layout_width="80dp" android:layout_height="114dp"
+            android:layout_below="@+id/head" android:layout_centerHorizontal="true"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/torso_image"
+            	android:layout_width="80dp" android:layout_height="114dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem2_torso_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_torso"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            
+	            <FrameLayout
+	                android:id="@+id/gem1_torso_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_torso"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem3_torso_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem3_torso"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>      
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/neck"
+            android:layout_width="52dp" android:layout_height="52dp"
+            android:layout_alignBottom="@+id/shoulders" android:layout_toRightOf="@+id/torso"
+            android:layout_marginBottom="14dp" android:layout_marginLeft="10dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/neck_image"
+            	android:layout_width="52dp" android:layout_height="52dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_neck_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_neck"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>    
+
+        <ImageView
+            android:id="@+id/waist"
+            android:layout_width="82dp" android:layout_height="30dp"
+            android:layout_alignLeft="@+id/torso" android:layout_below="@+id/torso"
+            android:layout_marginTop="6dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
+        
+        <RelativeLayout 
+            android:id="@+id/legs"
+            android:layout_width="66dp" android:layout_height="88dp"
+            android:layout_centerHorizontal="true" android:layout_below="@+id/waist"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true">
+            <ImageView
+                android:id="@+id/legs_image"
+            	android:layout_width="66dp" android:layout_height="88dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_legs_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_legs"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem2_legs_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_legs"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/feet"
+            android:layout_width="66dp" android:layout_height="86dp"
+            android:layout_alignLeft="@+id/legs" android:layout_below="@+id/legs"
+            android:layout_marginTop="4dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/feet_image"
+            	android:layout_width="66dp" android:layout_height="86dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_feet_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_feet"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem2_feet_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_feet"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/hands"
+            android:layout_width="64dp" android:layout_height="86dp"
+            android:layout_alignBottom="@+id/waist" android:layout_alignLeft="@+id/equipment_image"
+            android:layout_marginBottom="10dp" android:layout_marginLeft="6dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/hands_image"
+            	android:layout_width="64dp" android:layout_height="86dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_hands_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_hands"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem2_hands_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_hands"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+        
+        <RelativeLayout 
+            android:id="@+id/bracers"
+            android:layout_width="64dp" android:layout_height="86dp"
+            android:layout_alignRight="@+id/equipment_image" android:layout_alignTop="@+id/hands"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/bracers_image"
+            	android:layout_width="64dp" android:layout_height="86dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_bracers_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_bracers"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem2_bracers_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".5"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_bracers"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout 
+            android:id="@+id/rightFinger"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:layout_alignRight="@+id/bracers" android:layout_alignTop="@+id/legs"
+            android:layout_marginRight="10dp" android:layout_marginTop="-4dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/rightFinger_image"
+            	android:layout_width="40dp" android:layout_height="40dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_rightFinger_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_rightFinger"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout 
+            android:id="@+id/leftFinger"
+            android:layout_width="40dp" android:layout_height="40dp"
+            android:layout_alignRight="@+id/hands" android:layout_alignTop="@+id/legs"
+            android:layout_marginRight="10dp" android:layout_marginTop="-4dp"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/leftFinger_image"
+            	android:layout_width="40dp" android:layout_height="40dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem1_leftFinger_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_leftFinger"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout 
+            android:id="@+id/offHand"
+            android:layout_width="64dp" android:layout_height="128dp"
+            android:layout_alignBottom="@+id/feet" android:layout_alignLeft="@+id/bracers"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/offHand_image"
+            	android:layout_width="64dp" android:layout_height="128dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem2_offHand_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_offHand"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem1_offHand_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_offHand"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem3_offHand_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem3_offHand"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>      
+        </RelativeLayout>
+
+        <RelativeLayout 
+            android:id="@+id/mainHand"
+            android:layout_width="64dp" android:layout_height="128dp"
+            android:layout_alignBottom="@+id/feet" android:layout_alignLeft="@+id/hands"
+            android:adjustViewBounds="true">
+            <ImageView
+            	android:id="@+id/mainHand_image"
+            	android:layout_width="64dp" android:layout_height="128dp"
+            	android:adjustViewBounds="true"
+            	android:scaleType="centerCrop"/>
+            <LinearLayout 
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+	            <FrameLayout
+	                android:id="@+id/gem2_mainHand_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem2_mainHand"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem1_mainHand_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem1_mainHand"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	            <FrameLayout
+	                android:id="@+id/gem3_mainHand_socket"
+	                android:layout_width="wrap_content" android:layout_height="match_parent"
+	                android:layout_weight=".3"
+	                android:alpha=".6">
+	                <ImageView 
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"
+	                	android:src="@drawable/socket_background"/>
+	                <ImageView 
+	                	android:id="@+id/gem3_mainHand"
+	                	android:layout_width="match_parent" android:layout_height="match_parent"
+	                	android:layout_gravity="center_horizontal"/>
+	            </FrameLayout>
+	        </LinearLayout>      
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

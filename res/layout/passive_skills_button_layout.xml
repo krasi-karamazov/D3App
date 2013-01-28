@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:id="@+id/button_container"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button 
+            android:id="@+id/passive_skill_button"
+            android:layout_width="81dp" android:layout_height="81dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/passive_skill_button_background"/>
+        <ImageView 
+            android:id="@+id/passive_skill_image"
+            android:layout_width="64dp" android:layout_height="64dp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+	<TextView 
+	    android:id="@+id/passive_skill_label"
+	    android:layout_width="match_parent" android:layout_height="wrap_content"
+	    android:gravity="center_horizontal"/>
+</LinearLayout>

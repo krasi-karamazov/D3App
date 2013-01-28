@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingRight="20dp" android:paddingLeft="20dp" 
+    android:paddingTop="15dp" android:paddingBottom="20dp"
+    android:orientation="vertical" android:background="@drawable/dialog_back" >
+    <TextView 
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="25sp"/>
+    <TextView 
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/battletag_hint"
+        android:layout_marginBottom="10dp"/>
+    <EditText 
+        android:id="@+id/battle_tag_field"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:inputType="text" android:layout_marginBottom="5dp" style="@style/D3EditText"/>
+	
+	<TextView
+        android:id="@+id/choose_realm_view"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center_horizontal" android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:text="@string/choose_realm_label"/>
+    <RadioGroup
+        android:id="@+id/buttons_container"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" 
+        android:orientation="horizontal" android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp">
+        <RadioButton 
+	        android:id="@+id/us_button"
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:button="@drawable/check_button_background"
+	        android:text="@string/us_server_label"
+	        android:checked="true"/>
+        <RadioButton 
+	        android:id="@+id/eu_button"
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:button="@drawable/check_button_background"
+	        android:text="@string/eu_server_label"/>
+        <RadioButton 
+	        android:id="@+id/kr_button"
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:button="@drawable/check_button_background"
+	        android:text="@string/kr_server_label"/>
+        <RadioButton 
+	        android:id="@+id/tw_button"
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:button="@drawable/check_button_background"
+	        android:text="@string/tw_server_label"/>
+    </RadioGroup>
+    
+    <LinearLayout 
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <Button 
+		    android:id="@+id/ok_button" 
+		    android:layout_width="match_parent" android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_weight=".5"
+		    android:text="@string/ok_button" style="@style/D3AppButton"/>
+        <Button 
+		    android:id="@+id/cancel_button" 
+		    android:layout_width="match_parent" android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_weight=".5"
+		    android:text="@string/cancel_button" style="@style/D3AppButton"/>
+    </LinearLayout>
+</LinearLayout>

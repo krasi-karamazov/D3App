@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="20dp">
+    <LinearLayout 
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+       		android:id="@+id/last_played_hero_label"
+       		android:layout_width="match_parent" android:layout_height="wrap_content"
+       		android:gravity="center" android:layout_marginBottom="15dp"
+       		style="@style/D3StatsTextStyleNormalSmall"
+       		android:text="@string/last_player_hero_label"/>
+        <LinearLayout 
+        	android:layout_width="match_parent" android:layout_height="wrap_content"
+        	android:gravity="center_horizontal"
+        	android:orientation="vertical">
+        	
+	        <ImageView android:id="@+id/last_played_hero_portrait"
+	            android:layout_width="wrap_content" android:layout_height="match_parent"
+	            android:scaleType="fitCenter"
+	            android:minWidth="100dp" android:minHeight="100dp"
+	            android:background="@drawable/portrait_frame" />
+	        
+	        <TextView
+	            android:id="@+id/last_played_hero_name"
+	            android:layout_width="wrap_content" android:layout_height="match_parent"
+	            android:gravity="center"
+	            style="@style/D3StatsTextStyleNormalSmall"
+	            android:text="@string/last_player_hero_label"/>
+	        
+	    </LinearLayout>
+	    <View 
+      		android:layout_width="match_parent" android:layout_height="1dp"
+      		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+      		android:background="#a99877"
+      		android:alpha=".5" />
+	    <RelativeLayout 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="center">
+	        <LinearLayout
+	            android:id="@+id/lifetime_kills_container" 
+	            android:layout_width="wrap_content" android:layout_height="match_parent"
+	            android:orientation="vertical">
+	             <ImageView 
+	                 android:layout_width="wrap_content" android:layout_height="wrap_content"
+	                 android:layout_gravity="center_horizontal"
+	                 android:minWidth="50dp" android:minHeight="50dp"
+	                 android:scaleType="fitXY" android:src="@drawable/kills"/>
+	             <TextView
+	                android:id="@+id/lifetime_kills_label"
+	            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	            	android:gravity="center"
+	            	style="@style/D3StatsTextStyleNormalSmall"
+	            	android:text="@string/lifetime_kills_label"/>
+	        </LinearLayout>
+	       	<LinearLayout 
+	            android:layout_width="wrap_content" android:layout_height="match_parent"
+	            android:layout_toRightOf="@id/lifetime_kills_container" android:layout_marginLeft="20dp"
+	            android:orientation="vertical">
+	             <ImageView 
+	                 android:layout_width="wrap_content" android:layout_height="wrap_content"
+	                 android:layout_gravity="center_horizontal"
+	                 android:minWidth="50dp" android:minHeight="50dp"
+	                 android:scaleType="fitXY" android:src="@drawable/elite_kills"/>
+	             <TextView 
+	                android:id="@+id/elite_kills_label"
+	            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	            	android:gravity="center"
+	            	style="@style/D3StatsTextStyleNormalSmall"
+	            	android:text="@string/elite_kills_label"/>
+	        </LinearLayout>
+	    </RelativeLayout>
+	    <View 
+      		android:layout_width="match_parent" android:layout_height="1dp"
+      		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+      		android:background="#a99877"
+      		android:alpha=".5" />
+	    <LinearLayout 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:orientation="vertical">
+	        <TextView 
+            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+            	style="@style/D3StatsTextStyleNormalSmall"
+            	android:text="@string/normal_progression_label"/>
+	        <FrameLayout 
+		        android:layout_width="match_parent" android:layout_height="20dp"
+		        android:padding="5dp"
+		        android:background="@drawable/portrait_frame">
+		        <kpk.dev.d3app.widgets.ProgressionProgressBar
+		        	android:id="@+id/progression_bar_normal"
+		        	android:layout_width="match_parent" android:layout_height="match_parent"
+		        	android:background="@drawable/portrait_frame"/>
+	    	</FrameLayout>
+	    	<TextView 
+            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+            	style="@style/D3StatsTextStyleNormalSmall"
+            	android:text="@string/hardcore_progression_label"/>
+	        <FrameLayout 
+		        android:layout_width="match_parent" android:layout_height="20dp"
+		        android:padding="5dp"
+		        android:background="@drawable/portrait_frame">
+		        <kpk.dev.d3app.widgets.ProgressionProgressBar
+		        	android:id="@+id/progression_bar_hardcore"
+		        	android:layout_width="match_parent" android:layout_height="match_parent"
+		        	android:background="@drawable/portrait_frame"/>
+	    	</FrameLayout>
+	    </LinearLayout>
+	    <View 
+      		android:layout_width="match_parent" android:layout_height="1dp"
+      		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+      		android:background="#a99877"
+      		android:alpha=".5" />
+	    <TextView 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        style="@style/D3StatsTextStyleNormalBig"
+	        android:text="@string/artisans_label"/>
+	    <LinearLayout 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="center_horizontal" android:orientation="horizontal"
+	        >
+	        <LinearLayout 
+	            android:layout_width="match_parent" android:layout_height="match_parent"
+	            android:orientation="vertical" android:layout_weight=".5"
+	            android:gravity="center_horizontal">
+	            <ImageView android:id="@+id/blacksmith_portrait"
+		            android:layout_width="wrap_content" android:layout_height="wrap_content"
+		            android:layout_marginRight="10dp"
+		            android:scaleType="fitCenter"
+		            android:minWidth="64dp" android:minHeight="64dp"
+		            android:background="@drawable/portrait_frame" />
+	            <TextView 
+	                android:layout_width="match_parent" android:layout_height="wrap_content"
+	                android:gravity="center_horizontal"
+	                style="@style/D3StatsTextStyleNormalSmall"
+	                android:text="@string/blacksmith_label"/>
+	            <TextView 
+	                android:id="@+id/blacksmith_levels_field"
+	                android:layout_width="match_parent" android:layout_height="wrap_content"
+	                android:gravity="center_horizontal"
+	                style="@style/D3StatsTextStyleNormalExtraSmall"
+	                android:text="@string/blacksmith_label"/>
+	        </LinearLayout>
+	        <LinearLayout 
+	            android:layout_width="match_parent" android:layout_height="match_parent"
+	            android:orientation="vertical" android:layout_weight=".5"
+	            android:gravity="center_horizontal">
+	            <ImageView android:id="@+id/jeweler_portrait"
+	            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	            	android:scaleType="fitCenter"
+	            	android:minWidth="64dp" android:minHeight="64dp"
+	            	android:background="@drawable/portrait_frame" />
+	            <TextView 
+	                android:layout_width="match_parent" android:layout_height="wrap_content"
+	                android:gravity="center_horizontal"
+	                style="@style/D3StatsTextStyleNormalSmall"
+	                android:text="@string/jeweler_label"/>
+	            <TextView 
+	                android:id="@+id/jeweler_levels_field"
+	                android:layout_width="match_parent" android:layout_height="wrap_content"
+	                android:gravity="center_horizontal"
+	                style="@style/D3StatsTextStyleNormalExtraSmall"
+	                android:text="@string/blacksmith_label"/>
+	        </LinearLayout>
+	    </LinearLayout>
+	    
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="20dp">
+    <LinearLayout 
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout 
+        	android:layout_width="match_parent" android:layout_height="wrap_content"
+        	android:gravity="left"
+        	android:orientation="horizontal">
+        	
+	        <ImageView android:id="@+id/hero_portrait"
+	            android:layout_width="wrap_content" android:layout_height="match_parent"
+	            android:layout_marginRight="20dp"
+	            android:scaleType="fitCenter"
+	            android:minWidth="100dp" android:minHeight="100dp"
+	            android:background="@drawable/portrait_frame" />
+	        <LinearLayout 
+	            android:layout_width="wrap_content" android:layout_height="match_parent"
+	            android:orientation="vertical">
+	            <TextView
+	            	android:id="@+id/hero_name"
+	            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	            	android:gravity="center"
+	            	style="@style/D3StatsTextStyleNormalBig"
+	            	android:singleLine="true" android:ellipsize="end"
+	            	android:text="@string/last_player_hero_label"/>
+		        <TextView
+		            android:id="@+id/hero_levels"
+		            android:layout_width="wrap_content" android:layout_height="wrap_content"
+		            android:gravity="center"
+		            style="@style/D3StatsTextStyleNormalExtraSmallClass"
+		            android:text="@string/last_player_hero_label"/>
+	        </LinearLayout>
+	    </LinearLayout>
+	    <View 
+      		android:layout_width="match_parent" android:layout_height="1dp"
+      		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+      		android:background="#a99877"
+      		android:alpha=".5" />
+       	<LinearLayout 
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+             <ImageView 
+                 android:layout_width="wrap_content" android:layout_height="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                 android:minWidth="50dp" android:minHeight="50dp"
+                 android:scaleType="fitXY" android:src="@drawable/elite_kills"/>
+             <TextView 
+                android:id="@+id/elite_kills_label"
+            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+            	android:gravity="center"
+            	style="@style/D3StatsTextStyleNormalSmall"
+            	android:text="@string/elite_kills_label"/>
+        </LinearLayout>
+        <View 
+      		android:layout_width="match_parent" android:layout_height="1dp"
+      		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+      		android:background="#a99877"
+      		android:alpha=".5" />
+       	
+       	<LinearLayout 
+       	    android:layout_width="match_parent" android:layout_height="wrap_content"
+       	    android:baselineAligned="false">
+       	    <FrameLayout 
+       	        android:layout_width="match_parent" android:layout_height="match_parent"
+       	        android:layout_weight=".5">
+       	        <ImageView
+       	            android:id="@+id/hero_life_image" 
+       	            android:layout_width="match_parent" android:layout_height="match_parent"
+       	            android:minWidth="90dp" android:minHeight="90dp"/>
+       	        <TextView 
+       	            android:id="@+id/hero_life_field"
+            		android:layout_width="match_parent" android:layout_height="match_parent"
+            		style="@style/D3StatsTextStyleNormalSmall"
+            		android:shadowColor="#000000"  
+        			android:shadowRadius="1.5"  
+        			android:shadowDx="1" android:shadowDy="1" 
+            		android:gravity="center"/>
+       	    </FrameLayout>
+       	    <FrameLayout 
+       	        android:layout_width="match_parent" android:layout_height="match_parent"
+       	        android:layout_weight=".5">
+       	        <ImageView 
+       	            android:id="@+id/hero_resources_image"
+       	            android:layout_width="match_parent" android:layout_height="match_parent"
+       	            android:minWidth="90dp" android:minHeight="90dp"/>
+       	        <TextView 
+       	            android:id="@+id/hero_resources_field"
+            		android:layout_width="match_parent" android:layout_height="match_parent"
+            		style="@style/D3StatsTextStyleNormalSmall"
+            		android:shadowColor="#000000"  
+        			android:shadowRadius="1.5"  
+        			android:shadowDx="1" android:shadowDy="1"
+            		android:gravity="center"/>
+       	    </FrameLayout>
+       	</LinearLayout>
+       	<LinearLayout 
+       	    android:layout_width="match_parent" android:layout_height="wrap_content"
+       	    android:baselineAligned="false">
+       	    <TextView 
+      	        android:id="@+id/life_label"
+      	        android:layout_weight=".5"
+           		android:layout_width="match_parent" android:layout_height="match_parent"
+           		style="@style/D3StatsTextStyleNormalSmall"
+           		android:gravity="center"/>
+       	    <TextView 
+      	        android:id="@+id/resourse_label"
+      	        android:layout_weight=".5"
+           		android:layout_width="match_parent" android:layout_height="match_parent"
+           		style="@style/D3StatsTextStyleNormalSmall"
+           		android:gravity="center"/>
+       	</LinearLayout>
+	    <View 
+      		android:layout_width="match_parent" android:layout_height="1dp"
+      		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+      		android:background="#a99877"
+      		android:alpha=".5" />
+	    <LinearLayout 
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:orientation="vertical">
+	        <TextView 
+            	android:layout_width="wrap_content" android:layout_height="wrap_content"
+            	style="@style/D3StatsTextStyleNormalSmall"
+            	android:text="@string/progression_label"/>
+	        <FrameLayout 
+		        android:layout_width="match_parent" android:layout_height="20dp"
+		        android:padding="5dp"
+		        android:background="@drawable/portrait_frame">
+		        <kpk.dev.d3app.widgets.ProgressionProgressBar
+		        	android:id="@+id/hero_progression_bar"
+		        	android:layout_width="match_parent" android:layout_height="match_parent"
+		        	android:background="@drawable/portrait_frame"/>
+	    	</FrameLayout>
+	    </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

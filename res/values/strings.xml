@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">D3App</string>
+    <string name="menu_settings">Settings</string>
+	<string name="ok_button">OK</string>
+	<string name="cancel_button">CANCEL</string>
+	<string name="choose_realm_label">Choose your realm</string>
+	<string name="add_profile_button_label">Profiles</string>
+	<string name="server_checker_button_label">Server\nChecker</string>
+	<string name="about_button_label">About</string>
+	<string name="settings_button_label">Settings</string>
+	<string name="add_profile_text">Add profile</string>
+	<string name="add_profile_button_symbol"> t </string>
+	<string name="add_battletag_dialog_title">Add profile</string>
+	<string name="connectivity_alert_dialog_title">Error</string>
+	<string name="connectivity_alert_dialog_message">Cannot establish connection with battle.net servers. The app will now close.</string>
+	<string name="battletag_hint">BattleTag(E.g. Straton#1)</string>
+	<string name="us_server_label">US</string>
+	<string name="eu_server_label">EU</string>
+	<string name="kr_server_label">KR</string>
+	<string name="tw_server_label">TW</string>
+	<string name="external_storage_error_message">External storage is not available. The app needs it to store downloaded data. The app will now close.</string>
+	<string name="last_player_hero_label">Last played hero</string>
+	<string name="lifetime_kills_label">Lifetime kills</string>
+	<string name="elite_kills_label">Elite kills</string>
+	<string name="normal_progression_label">Normal progression</string>
+	<string name="progression_label">Progression</string>
+	<string name="attributes_label">Attributes</string>
+	<string name="hardcore_progression_label">Hardcore progression</string>
+	<string name="artisans_label">Artisans</string>
+	<string name="blacksmith_label">Blacksmith</string>
+	<string name="jeweler_label">Jeweler</string>
+	<string name="monk_label">Monk</string>
+	<string name="barbarian_label">Barbarian</string>
+	<string name="dh_label">Demon Hunter</string>
+	<string name="wizard_label">Wizard</string>
+	<string name="wd_label">Witch Doctor</string>
+	
+</resources>

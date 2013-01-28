@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <ImageView 
+        android:id="@+id/skill_image"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:minWidth="70dp" android:minHeight="70dp"/>
+     
+    <TextView 
+	    android:id="@+id/skill_enabled_level"
+	    android:layout_width="wrap_content" android:layout_height="wrap_content"
+	    android:layout_centerInParent="true"
+	    android:gravity="center_horizontal"
+	    style="@style/D3StatsTextStyleNormalBig"/>
+	
+	<ImageView 
+        android:id="@+id/mouse_icon"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_below="@+id/skill_image" android:layout_alignRight="@+id/skill_image"
+        android:minWidth="15dp" android:minHeight="18dp"
+        android:src="@drawable/left_mouse_icon"/>
+	
+	<TextView 
+	    android:id="@+id/skill_category"
+	    
+	    android:layout_width="match_parent" android:layout_height="wrap_content"
+	    android:layout_below="@+id/mouse_icon"
+	    android:layout_marginTop="5dp"
+	    android:gravity="center_horizontal"
+	    style="@style/D3StatsTextStyleBoldSmall"/>
+</RelativeLayout>
