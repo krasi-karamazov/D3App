@@ -33,6 +33,7 @@ public class HeroDataAdapter extends FragmentStatePagerAdapter {
 			fragment = new HeroSkillsFragment();
 			((HeroSkillsFragment)fragment).setData(mHeroModel);
 		}
+		//Stats fragment
 		if(position == 3){
 			fragment = new HeroStatsFragment();
 			((HeroStatsFragment)fragment).setData(mHeroModel.getStats());
