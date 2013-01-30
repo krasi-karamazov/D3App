@@ -38,6 +38,18 @@
         <item name="android:textSize">15sp</item>
     </style>
     
+    <style name="D3StatsTitleStyle">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>:
+    </style>
+    
+    <style name="D3StatsStatsFieldStyle">
+        <item name="android:textColor">#a99877</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    
     <style name="D3StatsTextStyleRune">
         <item name="android:textColor">#a99877</item>
         <item name="android:textSize">14sp</item>

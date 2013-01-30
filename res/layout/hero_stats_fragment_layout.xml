@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout 
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView 
+        	android:id="@+id/stats_category_title_1"
+        	android:layout_width="match_parent" android:layout_height="wrap_content"
+        	android:gravity="left"
+        	style="@style/D3StatsTitleStyle"/>
+	    <TextView 
+	        android:id="@+id/stats_category_1"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp" android:gravity="left"
+	        style="@style/D3StatsStatsFieldStyle"/>
+	    <View 
+	   		android:layout_width="match_parent" android:layout_height="1dp"
+	   		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+	   		android:background="#a99877"
+	   		android:alpha=".5" />
+	    <TextView 
+	        android:id="@+id/stats_category_title_2"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="left"
+	        style="@style/D3StatsTitleStyle"/>
+	    <TextView 
+	        android:id="@+id/stats_category_2"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp" android:gravity="left"
+	        style="@style/D3StatsStatsFieldStyle"/>
+	    <View 
+	   		android:layout_width="match_parent" android:layout_height="1dp"
+	   		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+	   		android:background="#a99877"
+	   		android:alpha=".5" />
+	    <TextView 
+	        android:id="@+id/stats_category_title_3"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="left"
+	        style="@style/D3StatsTitleStyle"/>
+	    <TextView 
+	        android:id="@+id/stats_category_3"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp" android:gravity="left"
+	        style="@style/D3StatsStatsFieldStyle"/>
+	    <View 
+	   		android:layout_width="match_parent" android:layout_height="1dp"
+	   		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+	   		android:background="#a99877"
+	   		android:alpha=".5" />
+	    <TextView 
+	        android:id="@+id/stats_category_title_4"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="left"
+	        style="@style/D3StatsTitleStyle"/>
+	    <TextView 
+	        android:id="@+id/stats_category_4"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp" android:gravity="left"
+	        style="@style/D3StatsStatsFieldStyle"/>
+	    <View 
+	   		android:layout_width="match_parent" android:layout_height="1dp"
+	   		android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+	   		android:background="#a99877"
+	   		android:alpha=".5" />
+	    <TextView 
+	        android:id="@+id/stats_category_title_5"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:gravity="left"
+	        style="@style/D3StatsTitleStyle"/>
+	    <TextView 
+	        android:id="@+id/stats_category_5"
+	        android:layout_width="match_parent" android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp" android:gravity="left"
+	        style="@style/D3StatsStatsFieldStyle"/>
+	   
+    </LinearLayout>
+    
+</ScrollView>

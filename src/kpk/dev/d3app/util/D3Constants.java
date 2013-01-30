@@ -43,7 +43,11 @@ public class D3Constants {
 		{R.id.gem1_offHand_socket, R.id.gem2_offHand_socket, R.id.gem3_offHand_socket}, 
 		{R.id.gem1_mainHand_socket, R.id.gem2_mainHand_socket, R.id.gem3_mainHand_socket}};
 	
-	
+	public static final String MAIN_ATTRIBUTES_KEY = "Main attributes";
+	public static final String OFFENSIVE_KEY = "Offensive";
+	public static final String LIFE_KEY = "Life";
+	public static final String DEFENSIVE_KEY = "Defensive";
+	public static final String ADVENTURE_KEY = "Adventure";
 	
 	public static String ITEM_INFO_URL = ".battle.net/api/d3/data/";
 }
