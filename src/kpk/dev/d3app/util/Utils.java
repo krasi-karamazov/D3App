@@ -1,6 +1,7 @@
 package kpk.dev.d3app.util;
 
 import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class Utils {
+	private static DecimalFormat twoDForm = new DecimalFormat("#.##");
 	public static Typeface getFont(Context aContext) {
 		Typeface typeFace = Typeface.createFromAsset(aContext.getAssets(), "fonts/d3_bold.ttf");
 		return typeFace;
@@ -214,16 +216,16 @@ public class Utils {
 	
 	private static Map<String, String> setupAdventure(Map<String, Number> stats) {
 		Map<String, String> mAdventure = new HashMap<String, String>();
-		mAdventure.put("Gold find", Double.valueOf(stats.get("goldFind").floatValue()).toString() + "%");
-		mAdventure.put("Magic find", Double.valueOf(stats.get("magicFind").floatValue()).toString() + "%");
+		mAdventure.put("Gold find", "+" + Double.valueOf(twoDForm.format(stats.get("goldFind").doubleValue() * 100)).toString() + "%");
+		mAdventure.put("Magic find", "+" + Double.valueOf(twoDForm.format(stats.get("magicFind").doubleValue() * 100)).toString() + "%");
 		return mAdventure;
 	}
-
+	
 	private static Map<String, String> setupDefensive(Map<String, Number> stats) {
 		Map<String, String> mDefensive = new HashMap<String, String>();
 		mDefensive.put("Block ammount min", Double.valueOf(stats.get("blockAmountMin").floatValue()).toString());
 		mDefensive.put("Block ammount max", Double.valueOf(stats.get("blockAmountMax").floatValue()).toString());
-		mDefensive.put("Block chance", Double.valueOf(stats.get("blockChance").floatValue()).toString() + "%");
+		mDefensive.put("Block chance", Double.valueOf(twoDForm.format(stats.get("blockChance").doubleValue() * 100)).toString() + "%");
 		mDefensive.put("Thorns", Double.valueOf(stats.get("thorns").floatValue()).toString());
 		mDefensive.put("Physical resistance", Double.valueOf(stats.get("physicalResist").floatValue()).toString());
 		mDefensive.put("Fire resistance", Double.valueOf(stats.get("fireResist").floatValue()).toString());
@@ -231,11 +233,11 @@ public class Utils {
 		mDefensive.put("Lightning resistance", Double.valueOf(stats.get("lightningResist").floatValue()).toString());
 		mDefensive.put("Poison resistance", Double.valueOf(stats.get("poisonResist").floatValue()).toString());
 		mDefensive.put("Arcane resistance", Double.valueOf(stats.get("arcaneResist").floatValue()).toString());
-		mDefensive.put("Damage reduction", Double.valueOf(stats.get("damageReduction").floatValue()).toString());
+		mDefensive.put("Damage reduction", Double.valueOf(twoDForm.format(stats.get("damageReduction").doubleValue() * 100)).toString() + "%");
 		
 		return mDefensive;
 	}
-
+	
 	private static Map<String, String> setupLife(Map<String, Number> stats) {
 		Map<String, String> mLife = new HashMap<String, String>();
 		mLife.put("Life", Double.valueOf(stats.get("life").floatValue()).toString());
@@ -247,13 +249,13 @@ public class Utils {
 
 	private static Map<String, String> setupOffensive(Map<String, Number> stats) {
 		Map<String, String> mOffensive = new HashMap<String, String>();
-		mOffensive.put("Attack speed", Double.valueOf(stats.get("attackSpeed").floatValue()).toString());
-		mOffensive.put("Damage increase", Double.valueOf(stats.get("damageIncrease").floatValue()).toString() + "%");
-		mOffensive.put("Critical hit chance", Double.valueOf(stats.get("critChance").floatValue()).toString() + "%");
-		mOffensive.put("Critical hit damage", Double.valueOf(stats.get("critDamage").floatValue()).toString() + "%");
+		mOffensive.put("Attack speed", Double.valueOf(twoDForm.format(stats.get("attackSpeed").doubleValue())).toString());
+		mOffensive.put("Damage increase", Double.valueOf(twoDForm.format(stats.get("damageIncrease").doubleValue() * 100)).toString() + "%");
+		mOffensive.put("Critical hit chance", Double.valueOf(twoDForm.format(stats.get("critChance").doubleValue() * 100)).toString() + "%");
+		mOffensive.put("Critical hit damage", "+" + (Double.valueOf(twoDForm.format(stats.get("critDamage").doubleValue() * 100)) - 100) + "%");
 		return mOffensive;
 	}
-
+	
 	private static Map<String, String> setupMainAttributes(Map<String, Number> stats) {
 		Map<String, String> mMainAttributes = new HashMap<String, String>();
 		mMainAttributes.put("Strength", Integer.valueOf(stats.get("strength").intValue()).toString());
