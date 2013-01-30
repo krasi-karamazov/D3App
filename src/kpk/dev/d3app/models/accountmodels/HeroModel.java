@@ -1,7 +1,5 @@
 package kpk.dev.d3app.models.accountmodels;
 
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;

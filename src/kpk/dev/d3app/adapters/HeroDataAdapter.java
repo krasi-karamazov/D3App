@@ -2,6 +2,7 @@ package kpk.dev.d3app.adapters;
 
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.ui.fragments.BasicHeroDataFragment;
+import kpk.dev.d3app.ui.fragments.FollowersFragment;
 import kpk.dev.d3app.ui.fragments.HeroArmoryFragment;
 import kpk.dev.d3app.ui.fragments.HeroSkillsFragment;
 import kpk.dev.d3app.ui.fragments.HeroStatsFragment;
@@ -33,10 +34,13 @@ public class HeroDataAdapter extends FragmentStatePagerAdapter {
 			fragment = new HeroSkillsFragment();
 			((HeroSkillsFragment)fragment).setData(mHeroModel);
 		}
-		//Stats fragment
 		if(position == 3){
 			fragment = new HeroStatsFragment();
 			((HeroStatsFragment)fragment).setData(mHeroModel.getStats());
+		}
+		if(position == 4){
+			fragment = new FollowersFragment();
+			((FollowersFragment)fragment).setData(mHeroModel.getFollowersModels());
 		}
 		return fragment;
 	}
@@ -55,6 +59,7 @@ public class HeroDataAdapter extends FragmentStatePagerAdapter {
 		"Hero summary",
 		"Armory",
 		"Skills",
-		"Statistics"
+		"Statistics",
+		"Followers"
 	};
 }

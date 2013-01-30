@@ -107,10 +107,11 @@ public class D3Follower implements IProfileModel {
 	public List<ContentValues> getSkillsContentValues() {
 		final List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
 		D3FollowerSkill skill = this.mSkills.get(0);
-		KPKLog.d("CLICK");
 		//contentValuesList.addAll(new SkillsModel().getActiveSkillsContentValues(mHeroID, mSlug, mSkills));
 		return contentValuesList;
 	}
+	
+	
 	
 	public List<ContentValues> getItemsContentValues(){
 		final List<ContentValues> contentValuesList = new ArrayList<ContentValues>();

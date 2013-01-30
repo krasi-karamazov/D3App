@@ -78,6 +78,7 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		while(iterator.hasNext()){
 			String key = iterator.next();
 			D3Follower follower = followers.get(key);
+			follower.setHeroID(model.getHeroID());
 			database.insert(D3Follower.TABLE_NAME, null, follower.getContentValues());
 			saveFollowerStats(follower, database);
 			saveFollowerSkills(follower.getSkillsContentValues(), database);

@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import kpk.dev.d3app.util.KPKLog;
+
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -121,7 +123,6 @@ public class HeroModelDecorator implements IProfileModel {
 	@JsonSetter("followers")
 	public void setFollowersModels(Map<String, D3Follower> followers) {	
 		mFollowers = followers;
-		
 	}
 	@JsonGetter("followers")
 	public Map<String, D3Follower> getFollowersModels() {

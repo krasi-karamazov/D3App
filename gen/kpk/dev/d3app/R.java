@@ -24,6 +24,14 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int follower_background=0x7f010002;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
         public static final int skill_icon=0x7f010001;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
@@ -62,47 +70,50 @@ containing a value of this type.
         public static final int edit_text_background=0x7f020018;
         public static final int elite_kills=0x7f020019;
         public static final int energy_drawable=0x7f02001a;
-        public static final int fury_drawable=0x7f02001b;
-        public static final int green_arrow=0x7f02001c;
-        public static final int ic_launcher=0x7f02001d;
-        public static final int item_blue=0x7f02001e;
-        public static final int item_gray=0x7f02001f;
-        public static final int item_green=0x7f020020;
-        public static final int item_orange=0x7f020021;
-        public static final int item_white=0x7f020022;
-        public static final int item_yellow=0x7f020023;
-        public static final int kills=0x7f020024;
-        public static final int left_mouse_icon=0x7f020025;
-        public static final int life_drawable=0x7f020026;
-        public static final int logo=0x7f020027;
-        public static final int mana_drawable=0x7f020028;
-        public static final int monk_progress=0x7f020029;
-        public static final int passive_normal=0x7f02002a;
-        public static final int passive_selected=0x7f02002b;
-        public static final int passive_skill_button_background=0x7f02002c;
-        public static final int portrait_frame=0x7f02002d;
-        public static final int profile_list_item_drawable=0x7f02002e;
-        public static final int progress_drawable=0x7f02002f;
-        public static final int progress_drawable_rect=0x7f020030;
-        public static final int progression_bar=0x7f020031;
-        public static final int red_arrow=0x7f020032;
-        public static final int right_mouse_icon=0x7f020033;
-        public static final int ruby_normal=0x7f020034;
-        public static final int ruby_selected=0x7f020035;
-        public static final int rune_a=0x7f020036;
-        public static final int rune_b=0x7f020037;
-        public static final int rune_c=0x7f020038;
-        public static final int rune_d=0x7f020039;
-        public static final int rune_e=0x7f02003a;
-        public static final int section_bg=0x7f02003b;
-        public static final int small_logo=0x7f02003c;
-        public static final int socket_background=0x7f02003d;
-        public static final int spirit_drawable=0x7f02003e;
-        public static final int text_field_background=0x7f02003f;
-        public static final int wall_land=0x7f020040;
-        public static final int wall_portrait=0x7f020041;
-        public static final int wdoctor_progress=0x7f020042;
-        public static final int wizard_progress=0x7f020043;
+        public static final int follower_enchantress=0x7f02001b;
+        public static final int follower_scoundrel=0x7f02001c;
+        public static final int follower_templar=0x7f02001d;
+        public static final int fury_drawable=0x7f02001e;
+        public static final int green_arrow=0x7f02001f;
+        public static final int ic_launcher=0x7f020020;
+        public static final int item_blue=0x7f020021;
+        public static final int item_gray=0x7f020022;
+        public static final int item_green=0x7f020023;
+        public static final int item_orange=0x7f020024;
+        public static final int item_white=0x7f020025;
+        public static final int item_yellow=0x7f020026;
+        public static final int kills=0x7f020027;
+        public static final int left_mouse_icon=0x7f020028;
+        public static final int life_drawable=0x7f020029;
+        public static final int logo=0x7f02002a;
+        public static final int mana_drawable=0x7f02002b;
+        public static final int monk_progress=0x7f02002c;
+        public static final int passive_normal=0x7f02002d;
+        public static final int passive_selected=0x7f02002e;
+        public static final int passive_skill_button_background=0x7f02002f;
+        public static final int portrait_frame=0x7f020030;
+        public static final int profile_list_item_drawable=0x7f020031;
+        public static final int progress_drawable=0x7f020032;
+        public static final int progress_drawable_rect=0x7f020033;
+        public static final int progression_bar=0x7f020034;
+        public static final int red_arrow=0x7f020035;
+        public static final int right_mouse_icon=0x7f020036;
+        public static final int ruby_normal=0x7f020037;
+        public static final int ruby_selected=0x7f020038;
+        public static final int rune_a=0x7f020039;
+        public static final int rune_b=0x7f02003a;
+        public static final int rune_c=0x7f02003b;
+        public static final int rune_d=0x7f02003c;
+        public static final int rune_e=0x7f02003d;
+        public static final int section_bg=0x7f02003e;
+        public static final int small_logo=0x7f02003f;
+        public static final int socket_background=0x7f020040;
+        public static final int spirit_drawable=0x7f020041;
+        public static final int text_field_background=0x7f020042;
+        public static final int wall_land=0x7f020043;
+        public static final int wall_portrait=0x7f020044;
+        public static final int wdoctor_progress=0x7f020045;
+        public static final int wizard_progress=0x7f020046;
     }
     public static final class id {
         public static final int about_button=0x7f09000b;
@@ -110,24 +121,26 @@ containing a value of this type.
         public static final int add_profile_button=0x7f090008;
         public static final int armory_container=0x7f090015;
         public static final int battle_tag_field=0x7f09000d;
-        public static final int battle_tag_label=0x7f090093;
-        public static final int blacksmith_levels_field=0x7f09008e;
-        public static final int blacksmith_portrait=0x7f09008d;
+        public static final int battle_tag_label=0x7f0900a4;
+        public static final int blacksmith_levels_field=0x7f09009f;
+        public static final int blacksmith_portrait=0x7f09009e;
         public static final int bracers=0x7f090042;
         public static final int bracers_image=0x7f090043;
-        public static final int button_container=0x7f090080;
+        public static final int button_container=0x7f090091;
         public static final int buttons_container=0x7f090007;
         public static final int cancel_button=0x7f090014;
         public static final int choose_realm_view=0x7f09000e;
         public static final int d3list=0x7f090060;
         public static final int details_view=0x7f090062;
-        public static final int dialog_message=0x7f09009f;
+        public static final int dialog_message=0x7f0900b0;
         public static final int dialog_title=0x7f09000c;
-        public static final int elite_kills_label=0x7f090068;
+        public static final int elite_kills_label=0x7f09007a;
+        public static final int enchantress_view=0x7f090065;
         public static final int equipment_image=0x7f090016;
         public static final int eu_button=0x7f090010;
         public static final int feet=0x7f090036;
         public static final int feet_image=0x7f090037;
+        public static final int follower_paper_doll=0x7f090066;
         public static final int gem1_bracers=0x7f090045;
         public static final int gem1_bracers_socket=0x7f090044;
         public static final int gem1_feet=0x7f090039;
@@ -180,87 +193,102 @@ containing a value of this type.
         public static final int hands_image=0x7f09003d;
         public static final int head=0x7f090017;
         public static final int head_image=0x7f090018;
-        public static final int hero_data_pager=0x7f090063;
-        public static final int hero_levels=0x7f090067;
-        public static final int hero_life_field=0x7f09006a;
-        public static final int hero_life_image=0x7f090069;
-        public static final int hero_name=0x7f090066;
-        public static final int hero_portrait=0x7f090065;
-        public static final int hero_progression_bar=0x7f09006f;
-        public static final int hero_resources_field=0x7f09006c;
-        public static final int hero_resources_image=0x7f09006b;
-        public static final int jeweler_levels_field=0x7f090090;
-        public static final int jeweler_portrait=0x7f09008f;
+        public static final int hero_data_pager=0x7f090075;
+        public static final int hero_levels=0x7f090079;
+        public static final int hero_life_field=0x7f09007c;
+        public static final int hero_life_image=0x7f09007b;
+        public static final int hero_name=0x7f090078;
+        public static final int hero_portrait=0x7f090077;
+        public static final int hero_progression_bar=0x7f090081;
+        public static final int hero_resources_field=0x7f09007e;
+        public static final int hero_resources_image=0x7f09007d;
+        public static final int jeweler_levels_field=0x7f0900a1;
+        public static final int jeweler_portrait=0x7f0900a0;
         public static final int kr_button=0x7f090011;
-        public static final int last_played_hero_label=0x7f090086;
-        public static final int last_played_hero_name=0x7f090088;
-        public static final int last_played_hero_portrait=0x7f090087;
-        public static final int last_updated_label=0x7f090094;
+        public static final int last_played_hero_label=0x7f090097;
+        public static final int last_played_hero_name=0x7f090099;
+        public static final int last_played_hero_portrait=0x7f090098;
+        public static final int last_updated_label=0x7f0900a5;
         public static final int leftFinger=0x7f09004c;
         public static final int leftFinger_image=0x7f09004d;
+        public static final int left_finger=0x7f09006a;
         public static final int legs=0x7f090030;
         public static final int legs_image=0x7f090031;
-        public static final int life_label=0x7f09006d;
-        public static final int lifetime_kills_container=0x7f090089;
-        public static final int lifetime_kills_label=0x7f09008a;
+        public static final int life_label=0x7f09007f;
+        public static final int lifetime_kills_container=0x7f09009a;
+        public static final int lifetime_kills_label=0x7f09009b;
         public static final int logo=0x7f090006;
         public static final int mainHand=0x7f090058;
         public static final int mainHand_image=0x7f090059;
-        public static final int menu_settings=0x7f0900a0;
-        public static final int mouse_icon=0x7f09009d;
+        public static final int main_hand=0x7f090067;
+        public static final int menu_settings=0x7f0900b1;
+        public static final int mouse_icon=0x7f0900ae;
         public static final int neck=0x7f09002b;
         public static final int neck_image=0x7f09002c;
         public static final int offHand=0x7f090050;
         public static final int offHand_image=0x7f090051;
+        public static final int off_hand=0x7f090069;
         public static final int ok_button=0x7f090013;
-        public static final int options_label=0x7f090095;
-        public static final int pager_title_strip=0x7f090064;
-        public static final int passive_skill_1=0x7f090071;
-        public static final int passive_skill_2=0x7f090072;
-        public static final int passive_skill_3=0x7f090073;
-        public static final int passive_skill_button=0x7f090081;
-        public static final int passive_skill_image=0x7f090082;
-        public static final int passive_skill_label=0x7f090083;
-        public static final int playtime_grid=0x7f090084;
-        public static final int portrait_last_hero_played=0x7f090091;
-        public static final int profile_data_pager=0x7f090085;
+        public static final int options_label=0x7f0900a6;
+        public static final int pager_title_strip=0x7f090076;
+        public static final int passive_skill_1=0x7f090082;
+        public static final int passive_skill_2=0x7f090083;
+        public static final int passive_skill_3=0x7f090084;
+        public static final int passive_skill_button=0x7f090092;
+        public static final int passive_skill_image=0x7f090093;
+        public static final int passive_skill_label=0x7f090094;
+        public static final int playtime_grid=0x7f090095;
+        public static final int portrait_last_hero_played=0x7f0900a2;
+        public static final int profile_data_pager=0x7f090096;
         public static final int profile_options_list=0x7f090061;
-        public static final int progress_bar=0x7f090096;
-        public static final int progression_bar_hardcore=0x7f09008c;
-        public static final int progression_bar_normal=0x7f09008b;
-        public static final int resourse_label=0x7f09006e;
+        public static final int progress_bar=0x7f0900a7;
+        public static final int progression_bar_hardcore=0x7f09009d;
+        public static final int progression_bar_normal=0x7f09009c;
+        public static final int resourse_label=0x7f090080;
         public static final int rightFinger=0x7f090048;
         public static final int rightFinger_image=0x7f090049;
+        public static final int right_finger=0x7f09006b;
         public static final int rune_image=0x7f090003;
         public static final int rune_name=0x7f090004;
+        public static final int scoundrel_view=0x7f090064;
         public static final int server_checker_button=0x7f090009;
-        public static final int server_indicator_arrow=0x7f09009a;
-        public static final int server_name=0x7f090099;
-        public static final int server_pager=0x7f090098;
-        public static final int server_region_label=0x7f090092;
-        public static final int servers_list=0x7f090097;
+        public static final int server_indicator_arrow=0x7f0900ab;
+        public static final int server_name=0x7f0900aa;
+        public static final int server_pager=0x7f0900a9;
+        public static final int server_region_label=0x7f0900a3;
+        public static final int servers_list=0x7f0900a8;
         public static final int settings_button=0x7f09000a;
         public static final int shoulders=0x7f09001d;
         public static final int shoulders_image=0x7f09001e;
-        public static final int skill_category=0x7f09009e;
+        public static final int skill_category=0x7f0900af;
         public static final int skill_category_number=0x7f090005;
-        public static final int skill_enabled_level=0x7f09009c;
+        public static final int skill_enabled_level=0x7f0900ad;
         public static final int skill_icon=0x7f090001;
-        public static final int skill_image=0x7f09009b;
+        public static final int skill_image=0x7f0900ac;
+        public static final int skill_image_1=0x7f09006d;
+        public static final int skill_image_2=0x7f09006f;
+        public static final int skill_image_3=0x7f090071;
+        public static final int skill_image_4=0x7f090073;
+        public static final int skill_label_1=0x7f09006e;
+        public static final int skill_label_2=0x7f090070;
+        public static final int skill_label_3=0x7f090072;
+        public static final int skill_label_4=0x7f090074;
         public static final int skill_name=0x7f090002;
-        public static final int skills_container=0x7f090070;
-        public static final int stats_category_1=0x7f090075;
-        public static final int stats_category_2=0x7f090077;
-        public static final int stats_category_3=0x7f090079;
-        public static final int stats_category_4=0x7f09007b;
-        public static final int stats_category_5=0x7f09007d;
-        public static final int stats_category_6=0x7f09007f;
-        public static final int stats_category_title_1=0x7f090074;
-        public static final int stats_category_title_2=0x7f090076;
-        public static final int stats_category_title_3=0x7f090078;
-        public static final int stats_category_title_4=0x7f09007a;
-        public static final int stats_category_title_5=0x7f09007c;
-        public static final int stats_category_title_6=0x7f09007e;
+        public static final int skills_container=0x7f09006c;
+        public static final int special=0x7f090068;
+        public static final int stats_category_1=0x7f090086;
+        public static final int stats_category_2=0x7f090088;
+        public static final int stats_category_3=0x7f09008a;
+        public static final int stats_category_4=0x7f09008c;
+        public static final int stats_category_5=0x7f09008e;
+        public static final int stats_category_6=0x7f090090;
+        public static final int stats_category_title_1=0x7f090085;
+        public static final int stats_category_title_2=0x7f090087;
+        public static final int stats_category_title_3=0x7f090089;
+        public static final int stats_category_title_4=0x7f09008b;
+        public static final int stats_category_title_5=0x7f09008d;
+        public static final int stats_category_title_6=0x7f09008f;
+        public static final int templar_view=0x7f090063;
         public static final int torso=0x7f090023;
         public static final int torso_image=0x7f090024;
         public static final int tw_button=0x7f090012;
@@ -275,24 +303,26 @@ containing a value of this type.
         public static final int d3_list_layout=0x7f030004;
         public static final int d3profile_option_layout=0x7f030005;
         public static final int dialog_background=0x7f030006;
-        public static final int hero_details_activity_layout=0x7f030007;
-        public static final int hero_details_fragment_layout=0x7f030008;
-        public static final int hero_skills_layout=0x7f030009;
-        public static final int hero_stats_fragment_layout=0x7f03000a;
-        public static final int passive_skills_button_layout=0x7f03000b;
-        public static final int play_times_layout=0x7f03000c;
-        public static final int profile_activity_layout=0x7f03000d;
-        public static final int profile_details_layout=0x7f03000e;
-        public static final int profile_list_item=0x7f03000f;
-        public static final int profile_options_item=0x7f030010;
-        public static final int profiles_list_header=0x7f030011;
-        public static final int progress_dialog_layout=0x7f030012;
-        public static final int region_fragment_layout=0x7f030013;
-        public static final int server_checker_layout=0x7f030014;
-        public static final int server_item_layout=0x7f030015;
-        public static final int skill_item_layout=0x7f030016;
-        public static final int splash_screen_layout=0x7f030017;
-        public static final int warning_dialog_background=0x7f030018;
+        public static final int followers_fragment_layout=0x7f030007;
+        public static final int followers_view_layout=0x7f030008;
+        public static final int hero_details_activity_layout=0x7f030009;
+        public static final int hero_details_fragment_layout=0x7f03000a;
+        public static final int hero_skills_layout=0x7f03000b;
+        public static final int hero_stats_fragment_layout=0x7f03000c;
+        public static final int passive_skills_button_layout=0x7f03000d;
+        public static final int play_times_layout=0x7f03000e;
+        public static final int profile_activity_layout=0x7f03000f;
+        public static final int profile_details_layout=0x7f030010;
+        public static final int profile_list_item=0x7f030011;
+        public static final int profile_options_item=0x7f030012;
+        public static final int profiles_list_header=0x7f030013;
+        public static final int progress_dialog_layout=0x7f030014;
+        public static final int region_fragment_layout=0x7f030015;
+        public static final int server_checker_layout=0x7f030016;
+        public static final int server_item_layout=0x7f030017;
+        public static final int skill_item_layout=0x7f030018;
+        public static final int splash_screen_layout=0x7f030019;
+        public static final int warning_dialog_background=0x7f03001a;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -419,5 +449,32 @@ containing a value of this type.
           @attr name android:skill_number
         */
         public static final int active_skill_styleable_skill_number = 0;
+        /** Attributes that can be used with a follower_styleable.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #follower_styleable_follower_background kpk.dev.d3app:follower_background}</code></td><td></td></tr>
+           </table>
+           @see #follower_styleable_follower_background
+         */
+        public static final int[] follower_styleable = {
+            0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link kpk.dev.d3app.R.attr#follower_background}
+          attribute's value can be found in the {@link #follower_styleable} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:follower_background
+        */
+        public static final int follower_styleable_follower_background = 0;
     };
 }

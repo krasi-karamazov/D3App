@@ -7,7 +7,6 @@ import kpk.dev.d3app.models.accountmodels.ProfileModel;
 import kpk.dev.d3app.models.accountmodels.ProfileModel.ArtisanType;
 import kpk.dev.d3app.models.accountmodels.ProfileModel.ProgressionType;
 import kpk.dev.d3app.util.D3Constants;
-import kpk.dev.d3app.util.KPKLog;
 import kpk.dev.d3app.widgets.ProgressionProgressBar;
 import android.graphics.Color;
 import android.os.Bundle;

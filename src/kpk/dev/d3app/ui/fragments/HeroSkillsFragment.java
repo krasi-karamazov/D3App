@@ -3,25 +3,21 @@ package kpk.dev.d3app.ui.fragments;
 import java.util.List;
 
 import kpk.dev.d3app.R;
-import kpk.dev.d3app.adapters.SkillsAdapter;
 import kpk.dev.d3app.models.accountmodels.D3PassiveSkill;
 import kpk.dev.d3app.models.accountmodels.D3Rune;
 import kpk.dev.d3app.models.accountmodels.D3Skill;
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.ui.activities.TooltipActivity;
 import kpk.dev.d3app.util.D3Constants;
-import kpk.dev.d3app.util.KPKLog;
 import kpk.dev.d3app.widgets.ActiveSkillView;
 import kpk.dev.d3app.widgets.PassiveSkillView;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -83,32 +79,57 @@ public class HeroSkillsFragment extends AbstractFragment<HeroModelDecorator> {
 	
 
 	private void setActiveSkillsData() {
-		int i = 1;
-		for(D3Skill skill : mSkills){
-			if(skill != null){
-				ActiveSkillView activeSkillView = new ActiveSkillView(getActivity());
-				if(skill.getCategorySlug().equalsIgnoreCase("primary")){
-					activeSkillView.setSkillNumber(getResources().getDrawable(R.drawable.left_mouse_icon), -1);
-				}else if(skill.getCategorySlug().equalsIgnoreCase("secondary")) {
-					activeSkillView.setSkillNumber(getResources().getDrawable(R.drawable.right_mouse_icon), -1);
-				}else{
-					activeSkillView.setSkillNumber(null, i);
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+			for(int i = 0; i < mSkills.size(); i++){
+				D3Skill skill = mSkills.get(i);
+				if(skill != null){
+					mSkillsHolder.addView(getPopulatedSkillView(skill, i + 1));
 				}
-				if(skill.getRune() != null){
-					activeSkillView.setRuneName(skill.getRune().getName());
-					activeSkillView.setRuneImage(getRuneDrawable(skill.getRune()));
-				}else{
-					activeSkillView.getRuneImageView().setVisibility(View.INVISIBLE);
-					activeSkillView.getRuneNameView().setVisibility(View.INVISIBLE);
-				}
-				setImage(D3Constants.SKILL_ICON_URL + skill.getIcon() + ".png", activeSkillView.getSkillImageView());
-				activeSkillView.setSkillName(skill.getName());
-				activeSkillView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-				activeSkillView.setOnClickListener(new SkillClickListener(getActiveToolTipUrl(skill)));
-				mSkillsHolder.addView(activeSkillView);
 			}
-			i++;
+		}else{
+			for(int i = 0; i < mSkills.size(); i+= 2){
+				D3Skill skill = mSkills.get(i);
+				D3Skill rightSkill = null;
+				if(i + 1 < mSkills.size()){
+					rightSkill = mSkills.get(i + 1);
+				}
+				LinearLayout activeSkillsRowContainer = new LinearLayout(getActivity());
+				activeSkillsRowContainer.setOrientation(LinearLayout.HORIZONTAL);
+				activeSkillsRowContainer.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+				if(skill != null){
+					activeSkillsRowContainer.addView(getPopulatedSkillView(skill, i + 1));
+				}
+				
+				if(rightSkill != null){
+					activeSkillsRowContainer.addView(getPopulatedSkillView(rightSkill, i + 2));
+				}
+				mSkillsHolder.addView(activeSkillsRowContainer);
+			}
 		}
+		
+	}
+	
+	private ActiveSkillView getPopulatedSkillView(D3Skill skill, int skillNum) {
+		ActiveSkillView activeSkillView = new ActiveSkillView(getActivity());
+		if(skill.getCategorySlug().equalsIgnoreCase("primary")){
+			activeSkillView.setSkillNumber(getResources().getDrawable(R.drawable.left_mouse_icon), -1);
+		}else if(skill.getCategorySlug().equalsIgnoreCase("secondary")) {
+			activeSkillView.setSkillNumber(getResources().getDrawable(R.drawable.right_mouse_icon), -1);
+		}else{
+			activeSkillView.setSkillNumber(null, skillNum);
+		}
+		if(skill.getRune() != null){
+			activeSkillView.setRuneName(skill.getRune().getName());
+			activeSkillView.setRuneImage(getRuneDrawable(skill.getRune()));
+		}else{
+			activeSkillView.getRuneImageView().setVisibility(View.INVISIBLE);
+			activeSkillView.getRuneNameView().setVisibility(View.INVISIBLE);
+		}
+		setImage(D3Constants.SKILL_ICON_URL + skill.getIcon() + ".png", activeSkillView.getSkillImageView());
+		activeSkillView.setSkillName(skill.getName());
+		activeSkillView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f));
+		activeSkillView.setOnClickListener(new SkillClickListener(getActiveToolTipUrl(skill)));
+		return activeSkillView;
 	}
 
 	private Drawable getRuneDrawable(D3Rune rune) {
