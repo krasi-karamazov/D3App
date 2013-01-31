@@ -34,6 +34,9 @@ public class D3Constants {
 		{R.id.gem1_bracers, R.id.gem2_bracers}, {R.id.gem1_rightFinger}, {R.id.gem1_leftFinger}, {R.id.gem1_offHand, R.id.gem2_offHand, R.id.gem3_offHand}, 
 		{R.id.gem1_mainHand, R.id.gem2_mainHand, R.id.gem3_mainHand}};
 	
+	public static final int[] FOLLOWERS_ITEMS_HOLDERS_IDS = {R.id.follower_main_hand, R.id.follower_off_hand, R.id.follower_left_finger, R.id.follower_right_finger,
+		R.id.follower_neck, R.id.special};
+	public static final String[] FOLLOWERS_ITEMS_TYPES = {"mainHand", "offHand", "leftFinger", "rightFinger", "neck", "special"};
 	
 	public static final int[][] ITEMS_SOCKETS = {{R.id.gem1_head_socket, R.id.gem2_head_socket}, {R.id.gem1_shoulders_socket, R.id.gem2_shoulders_socket}, 
 		{R.id.gem1_torso_socket, R.id.gem2_torso_socket, R.id.gem3_torso_socket},

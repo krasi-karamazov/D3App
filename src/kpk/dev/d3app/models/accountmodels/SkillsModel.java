@@ -1,7 +1,5 @@
 package kpk.dev.d3app.models.accountmodels;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +39,17 @@ public class SkillsModel {
 		final List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
 		for(D3Skill skill : skills) {
 			if(skill == null) continue;
+			ContentValues contentValues = skill.getSkillContentValues(followerSlug, heroID);
+			contentValuesList.add(contentValues);
+		}
+		return contentValuesList;
+	}
+	
+	public List<ContentValues> getFollowerSkillsContentValues(long heroID, String followerSlug, List<D3FollowerSkill> skills) {
+		final List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
+		for(D3FollowerSkill skill : skills) {
+			if(skill == null) continue;
+			//KPKLog.d(skill.getName());
 			ContentValues contentValues = skill.getSkillContentValues(followerSlug, heroID);
 			contentValuesList.add(contentValues);
 		}

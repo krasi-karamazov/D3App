@@ -2,10 +2,15 @@ package kpk.dev.d3app.models.accountmodels;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import kpk.dev.d3app.util.KPKLog;
 
@@ -32,13 +37,37 @@ public class D3Follower implements IProfileModel {
 		return this.mStats;
 	}
 	
-	public void setSkills(List<D3FollowerSkill> skills) {
-		KPKLog.d(skills.toString());
-		mSkills = skills;
+	@JsonAnySetter
+	public void handleUnknown(String key, Object value) {
+	    if(key.equalsIgnoreCase("skills")) {
+	    	mSkills = new ArrayList<D3FollowerSkill>();
+	    	ArrayList<?> val = (ArrayList<?>)value;
+	    	for(int i = 0; i < val.size(); i++) {
+	    		LinkedHashMap<?, ?> map = (LinkedHashMap<?, ?>)val.get(i);
+	    		Set<String> keySet = (Set<String>)map.keySet();
+	    		for(String mapKey : keySet) {
+	    			LinkedHashMap<?, ?> skillMap = (LinkedHashMap<?, ?>)map.get(mapKey);
+	    			D3FollowerSkill skill = new D3FollowerSkill();
+	    			skill.setSlug(skillMap.get("slug").toString());
+	    			skill.setName(skillMap.get("name").toString());
+	    			skill.setIcon(skillMap.get("icon").toString());
+	    			skill.setLevel(Integer.valueOf(skillMap.get("level").toString()));
+	    			skill.setTooltipURL(skillMap.get("tooltipUrl").toString());
+	    			skill.setDescription(skillMap.get("description").toString());
+	    			skill.setSimpleDescription(skillMap.get("simpleDescription").toString());
+	    			skill.setScillCalcId(skillMap.get("skillCalcId").toString());
+	    			mSkills.add(skill);
+	    		}
+	    	}
+	    }
 	}
 	
-	public List<D3FollowerSkill> getSkills() {
-		return mSkills ;
+	public List<D3FollowerSkill> getD3FollowerSkills(){
+		return mSkills;
+	}
+	
+	public void setD3FollowerSkills(List<D3FollowerSkill> skills){
+		mSkills = skills;
 	}
 	
 	public void setItems(Map<String, D3Item> items) {
@@ -106,8 +135,7 @@ public class D3Follower implements IProfileModel {
 	
 	public List<ContentValues> getSkillsContentValues() {
 		final List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
-		D3FollowerSkill skill = this.mSkills.get(0);
-		//contentValuesList.addAll(new SkillsModel().getActiveSkillsContentValues(mHeroID, mSlug, mSkills));
+		contentValuesList.addAll(new SkillsModel().getFollowerSkillsContentValues(mHeroID, mSlug, mSkills));
 		return contentValuesList;
 	}
 	

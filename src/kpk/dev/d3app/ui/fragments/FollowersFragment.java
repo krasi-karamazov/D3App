@@ -10,17 +10,15 @@ import android.view.ViewGroup;
 
 import kpk.dev.d3app.R;
 import kpk.dev.d3app.models.accountmodels.D3Follower;
+import kpk.dev.d3app.models.accountmodels.D3Item;
 import kpk.dev.d3app.util.KPKLog;
+import kpk.dev.d3app.util.Utils;
 
 public class FollowersFragment extends AbstractFragment<Map<String, D3Follower>> {
 	private Map<String, D3Follower> mFollowers;
 	@Override
 	public void setData(Map<String, D3Follower> data) {
 		mFollowers = data;
-		KPKLog.d("Followers size " + mFollowers.size());
-		KPKLog.d("Followers slug " + mFollowers.get("templar").getSlug());
-		KPKLog.d("Followers slug " + mFollowers.get("templar").getItems());
-		//KPKLog.d("Followers slug " + mFollowers.get("templar").getSkills());
 	}
 	
 	@Override
@@ -28,5 +26,16 @@ public class FollowersFragment extends AbstractFragment<Map<String, D3Follower>>
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.followers_fragment_layout, container, false);
 		return rootView;
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		setupItemsImageViews();
+	}
+
+	private void setupItemsImageViews() {
+		final List<D3Item> items = Utils.getListFromMap(mModel.getItems());
+		
 	}
 }

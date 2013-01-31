@@ -60,7 +60,7 @@ public class HeroArmoryFragment extends AbstractFragment<HeroModelDecorator> {
 	}
 	
 	private void setItemsImageViews() {
-		final List<D3Item> items = getListFromMap();
+		final List<D3Item> items = Utils.getListFromMap(mModel.getItems());
 		if(items == null || items.size() <= 0) {
 			for(int j = 0; j < D3Constants.ITEMS_HOLDERS_IDS.length; j++) {
 				for(int k = 0; k < D3Constants.ITEMS_SOCKETS[j].length; k++){
@@ -149,20 +149,6 @@ public class HeroArmoryFragment extends AbstractFragment<HeroModelDecorator> {
 		DisplayMetrics metrics = new DisplayMetrics();    
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);    
 		return metrics.densityDpi;    
-	}
-
-	private List<D3Item> getListFromMap() {
-		final Map<String, D3Item> items = mModel.getItems();
-		final Set<Entry<String, D3Item>> itemsSet = items.entrySet();
-		Iterator<Entry<String, D3Item>> itemsIterator = itemsSet.iterator();
-		final ArrayList<D3Item> itemsList = new ArrayList<D3Item>();
-		while(itemsIterator.hasNext()){
-			Entry<String, D3Item> entry = itemsIterator.next();
-			D3Item d3Item = entry.getValue();
-			d3Item.setType(entry.getKey());
-			itemsList.add(d3Item);
-		}
-		return itemsList;
 	}
 
 	private void setBackgroundImage() {

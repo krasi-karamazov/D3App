@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import kpk.dev.d3app.R;
+import kpk.dev.d3app.models.accountmodels.D3Item;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -50,6 +52,19 @@ public class Utils {
 				}
 			}
 		}
+	}
+	
+	public static List<D3Item> getListFromMap(Map<String, D3Item> items) {
+		final Set<Entry<String, D3Item>> itemsSet = items.entrySet();
+		Iterator<Entry<String, D3Item>> itemsIterator = itemsSet.iterator();
+		final ArrayList<D3Item> itemsList = new ArrayList<D3Item>();
+		while(itemsIterator.hasNext()){
+			Entry<String, D3Item> entry = itemsIterator.next();
+			D3Item d3Item = entry.getValue();
+			d3Item.setType(entry.getKey());
+			itemsList.add(d3Item);
+		}
+		return itemsList;
 	}
 	
 	public static void writeStatsStrings(Entry<String, Map<String, String>> entry, TextView titleView, TextView statsView){

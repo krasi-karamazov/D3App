@@ -11,7 +11,7 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/follower_enchantress"/>
         <ImageView
-            android:id="@+id/main_hand"
+            android:id="@+id/follower_main_hand"
             android:layout_width="40dp"
             android:layout_height="80dp"
             android:layout_alignRight="@+id/follower_paper_doll"
@@ -23,44 +23,44 @@
             android:id="@+id/special"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:layout_alignTop="@+id/main_hand"
+            android:layout_alignTop="@+id/follower_main_hand"
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@+id/main_hand" />
+            android:layout_toLeftOf="@+id/follower_main_hand" />
 
         <ImageView
-            android:id="@+id/off_hand"
+            android:id="@+id/follower_off_hand"
             android:layout_width="40dp"
             android:layout_height="80dp"
             android:layout_alignRight="@+id/follower_paper_doll"
-            android:layout_alignTop="@+id/main_hand"
+            android:layout_alignTop="@+id/follower_main_hand"
             android:layout_marginRight="9dp" />
 
         <ImageView
-            android:id="@+id/neck"
+            android:id="@+id/follower_neck"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignTop="@+id/special"
             android:layout_marginRight="14dp"
             android:layout_marginTop="2dp"
-            android:layout_toLeftOf="@+id/off_hand" />
+            android:layout_toLeftOf="@+id/follower_off_hand" />
 
         <ImageView
-            android:id="@+id/left_finger"
+            android:id="@+id/follower_left_finger"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_below="@+id/special"
             android:layout_marginRight="-12dp"
             android:layout_marginTop="4dp"
-            android:layout_toLeftOf="@+id/neck" />
+            android:layout_toLeftOf="@+id/follower_neck" />
 
         <ImageView
-            android:id="@+id/right_finger"
+            android:id="@+id/follower_right_finger"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_alignTop="@+id/left_finger"
+            android:layout_alignTop="@+id/follower_left_finger"
             android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@+id/off_hand" />
+            android:layout_toLeftOf="@+id/follower_off_hand" />
     </RelativeLayout>
 	<LinearLayout 
 	    android:id="@+id/skills_container"

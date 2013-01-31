@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import kpk.dev.d3app.models.accountmodels.D3Follower;
+import kpk.dev.d3app.models.accountmodels.D3FollowerSkill;
 import kpk.dev.d3app.models.accountmodels.D3Item;
 import kpk.dev.d3app.models.accountmodels.D3Mode;
 import kpk.dev.d3app.models.accountmodels.D3PassiveSkill;
@@ -211,7 +212,7 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 			follower.setSlug(cursor.getString(followerSlugColumn));
 			follower.setLevel(cursor.getInt(followerLevelColumn));
 			follower.setItems(getItems(heroID, database, follower.getSlug(), D3Item.FOLLOWER_ITEMS_TABLE_NAME));
-			//follower.setSkills(getFollowerSkills(heroID, follower.getSlug(), database));
+			follower.setD3FollowerSkills(getFollowerSkills(heroID, follower.getSlug(), database));
 			follower.setStats(getFollowerStats(heroID, follower.getSlug(), database, follower.getSlug()));
 			followers.put(cursor.getString(followerSlugColumn), follower);
 		}
@@ -238,12 +239,12 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		return statsMap;
 	}
 
-	private List<D3Skill> getFollowerSkills(long heroID, String slug, SQLiteDatabase database) {
+	private List<D3FollowerSkill> getFollowerSkills(long heroID, String slug, SQLiteDatabase database) {
 		String query = "select * from " + D3Skill.FOLLOWER_SKILLS_TABLE_NAME
 				+ " where " + D3Skill.FOLLOWER_SLUG_COLUMN + "='" + slug + "' and "
 				+ HeroModel.HERO_ID_COLUMN + "=" + heroID;
 		Cursor cursor = database.rawQuery(query, null);
-		final List<D3Skill> skills = new ArrayList<D3Skill>();
+		final List<D3FollowerSkill> skills = new ArrayList<D3FollowerSkill>();
 		while(cursor.moveToNext()) {
 			int skillSlugColumnIndex = cursor.getColumnIndexOrThrow(D3Skill.SLUG_COLUMN);
 			int skillNameColumnIndex = cursor.getColumnIndexOrThrow(D3Skill.NAME_COLUMN);
@@ -252,7 +253,7 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 			int skillTooltipURLColumnIndex = cursor.getColumnIndexOrThrow(D3Skill.TOOLTIP_URL_COLUMN);
 			int skillDescriptionColumnIndex = cursor.getColumnIndexOrThrow(D3Skill.DESCRIPTION_COLUMN);
 			int skillSimpleDescriptionColumnIndex = cursor.getColumnIndexOrThrow(D3Skill.SIMPLE_DESCRIPTION_COLUMN);
-			D3Skill skill = new D3Skill();
+			D3FollowerSkill skill = new D3FollowerSkill();
 			skill.setSlug(cursor.getString(skillSlugColumnIndex));
 			skill.setName(cursor.getString(skillNameColumnIndex));
 			skill.setIcon(cursor.getString(skillIconColumnIndex));
