@@ -61,66 +61,69 @@
             android:layout_alignTop="@+id/follower_left_finger"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/follower_off_hand" />
+        <LinearLayout 
+	    	android:id="@+id/skills_container"
+	    	android:layout_width="match_parent" android:layout_height="wrap_content"
+	    	android:layout_below="@+id/follower_paper_doll"
+	    	android:layout_alignLeft="@id/follower_paper_doll"
+	    	android:layout_alignRight="@+id/follower_paper_doll"
+	    	android:layout_marginTop="10dp">
+	        <LinearLayout 
+	            android:layout_width="match_parent" android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:orientation="vertical">
+	            <ImageView 
+			        android:id="@+id/skill_image_1"
+			        android:layout_width="match_parent" android:layout_height="wrap_content"
+			        android:maxWidth="42dp" android:maxHeight="42dp"
+			        
+			        android:src="@android:drawable/ic_delete"/>
+	            <TextView 
+	                android:id="@+id/skill_label_1"
+	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+	        </LinearLayout>
+		    <LinearLayout 
+	            android:layout_width="match_parent" android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:orientation="vertical">
+	            <ImageView 
+			        android:id="@+id/skill_image_2"
+			        android:layout_width="match_parent" android:layout_height="wrap_content"
+			        android:maxWidth="42dp" android:maxHeight="42dp"
+			        
+			        android:src="@android:drawable/ic_delete"/>
+	            <TextView 
+	                android:id="@+id/skill_label_2"
+	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+	        </LinearLayout>
+		    <LinearLayout 
+	            android:layout_width="match_parent" android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:orientation="vertical">
+	            <ImageView 
+			        android:id="@+id/skill_image_3"
+			        android:layout_width="match_parent" android:layout_height="wrap_content"
+			        android:maxWidth="42dp" android:maxHeight="42dp"
+			        
+			        android:src="@android:drawable/ic_delete"/>
+	            <TextView 
+	                android:id="@+id/skill_label_3"
+	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+	        </LinearLayout>
+	        <LinearLayout 
+	            android:layout_width="match_parent" android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:orientation="vertical">
+	            <ImageView 
+			        android:id="@+id/skill_image_4"
+			        android:layout_width="match_parent" android:layout_height="wrap_content"
+			        android:maxWidth="42dp" android:maxHeight="42dp"
+			        
+			        android:src="@android:drawable/ic_delete"/>
+	            <TextView 
+	                android:id="@+id/skill_label_4"
+	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+	        </LinearLayout>
+		</LinearLayout>
     </RelativeLayout>
-	<LinearLayout 
-	    android:id="@+id/skills_container"
-	    android:layout_width="match_parent" android:layout_height="wrap_content"
-	    android:layout_marginTop="10dp">
-        <LinearLayout 
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView 
-		        android:id="@+id/skill_image_1"
-		        android:layout_width="match_parent" android:layout_height="wrap_content"
-		        android:maxWidth="42dp" android:maxHeight="42dp"
-		        
-		        android:src="@android:drawable/ic_delete"/>
-            <TextView 
-                android:id="@+id/skill_label_1"
-                android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        </LinearLayout>
-	    <LinearLayout 
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView 
-		        android:id="@+id/skill_image_2"
-		        android:layout_width="match_parent" android:layout_height="wrap_content"
-		        android:maxWidth="42dp" android:maxHeight="42dp"
-		        
-		        android:src="@android:drawable/ic_delete"/>
-            <TextView 
-                android:id="@+id/skill_label_2"
-                android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        </LinearLayout>
-	    <LinearLayout 
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView 
-		        android:id="@+id/skill_image_3"
-		        android:layout_width="match_parent" android:layout_height="wrap_content"
-		        android:maxWidth="42dp" android:maxHeight="42dp"
-		        
-		        android:src="@android:drawable/ic_delete"/>
-            <TextView 
-                android:id="@+id/skill_label_3"
-                android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout 
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <ImageView 
-		        android:id="@+id/skill_image_4"
-		        android:layout_width="match_parent" android:layout_height="wrap_content"
-		        android:maxWidth="42dp" android:maxHeight="42dp"
-		        
-		        android:src="@android:drawable/ic_delete"/>
-            <TextView 
-                android:id="@+id/skill_label_4"
-                android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        </LinearLayout>
-	</LinearLayout>
 </LinearLayout>

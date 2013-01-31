@@ -16,6 +16,8 @@ public class D3Constants {
 	public static final int PROGRESS_INCREMENT = 10;
 	public static final String FIRST_LOGIN_COMPLETE_KEY = "first_login";
 	public static final String[] mModes = {"normal", "nightmare", "hell", "inferno"};
+	public static String[] FOLLOWERS_KEYS_ARRAY = {"templar", "scoundrel", "enchantress"};
+	public static int[] FOLLOWER_VIEWS_IDS = {R.id.templar_view, R.id.scoundrel_view, R.id.enchantress_view};
 	private static String APP_FOLDER = ".THEd3app";
 	public static final String BLACKSMITH_PORTRAIT_URL = "http://media.blizzard.com/d3/icons/portraits/64/blacksmith.png";
 	public static final String JEWELER_PORTRAIT_URL = "http://media.blizzard.com/d3/icons/portraits/64/jeweler.png";
@@ -33,7 +35,7 @@ public class D3Constants {
 		{R.id.gem1_neck}, {}, {R.id.gem1_legs, R.id.gem2_legs}, {R.id.gem1_feet, R.id.gem2_feet}, {R.id.gem1_hands, R.id.gem2_hands}, 
 		{R.id.gem1_bracers, R.id.gem2_bracers}, {R.id.gem1_rightFinger}, {R.id.gem1_leftFinger}, {R.id.gem1_offHand, R.id.gem2_offHand, R.id.gem3_offHand}, 
 		{R.id.gem1_mainHand, R.id.gem2_mainHand, R.id.gem3_mainHand}};
-	
+	public static final int[] FOLLOWERS_SKILLS_HOLDERS_IDS = {R.id.skill_image_1, R.id.skill_image_2, R.id.skill_image_3, R.id.skill_image_4};
 	public static final int[] FOLLOWERS_ITEMS_HOLDERS_IDS = {R.id.follower_main_hand, R.id.follower_off_hand, R.id.follower_left_finger, R.id.follower_right_finger,
 		R.id.follower_neck, R.id.special};
 	public static final String[] FOLLOWERS_ITEMS_TYPES = {"mainHand", "offHand", "leftFinger", "rightFinger", "neck", "special"};
