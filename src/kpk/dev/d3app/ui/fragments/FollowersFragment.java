@@ -4,9 +4,19 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
+import kpk.dev.d3app.R;
+import kpk.dev.d3app.listeners.FileDownloadListener;
+import kpk.dev.d3app.models.accountmodels.D3Follower;
+import kpk.dev.d3app.models.accountmodels.D3FollowerSkill;
+import kpk.dev.d3app.models.accountmodels.D3Item;
+import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
+import kpk.dev.d3app.tasks.FileDownloader;
+import kpk.dev.d3app.ui.activities.TooltipActivity;
+import kpk.dev.d3app.util.D3Constants;
+import kpk.dev.d3app.util.Utils;
+import kpk.dev.d3app.widgets.FollowerView;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -16,28 +26,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import kpk.dev.d3app.R;
-import kpk.dev.d3app.listeners.FileDownloadListener;
-import kpk.dev.d3app.models.accountmodels.D3Follower;
-import kpk.dev.d3app.models.accountmodels.D3FollowerSkill;
-import kpk.dev.d3app.models.accountmodels.D3Item;
-import kpk.dev.d3app.tasks.FileDownloader;
-import kpk.dev.d3app.util.D3Constants;
-import kpk.dev.d3app.util.KPKLog;
-import kpk.dev.d3app.util.Utils;
-import kpk.dev.d3app.widgets.FollowerView;
-
-public class FollowersFragment extends AbstractFragment<Map<String, D3Follower>> {
+public class FollowersFragment extends AbstractFragment<HeroModelDecorator> {
 	private Map<String, D3Follower> mFollowers;
 	private boolean mHasData;
 	private List<String> mapKeys= new ArrayList<String>();
 	private List<Integer> viewIds = new ArrayList<Integer>();
 	private View mRootView;
+	private HeroModelDecorator mModel;
 	@Override
-	public void setData(Map<String, D3Follower> data) {
+	public void setData(HeroModelDecorator data) {
 		if(data != null){
 			mHasData = true;
-			mFollowers = data;
+			mModel = data;
+			mFollowers = mModel.getFollowersModels();
 			for(int i = 0; i < D3Constants.FOLLOWERS_KEYS_ARRAY.length; i++) {
 				mapKeys.add(D3Constants.FOLLOWERS_KEYS_ARRAY[i]);
 				viewIds.add(D3Constants.FOLLOWER_VIEWS_IDS[i]);
@@ -104,20 +105,58 @@ public class FollowersFragment extends AbstractFragment<Map<String, D3Follower>>
 						};
 					});
 				}
+				view.setOnClickListener(showItemDetailsListener);
 			}
 		}
+	}
+	
+	private View.OnClickListener showItemDetailsListener = new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			D3Item item = (D3Item)v.getTag();
+			Intent intent = new Intent(getActivity(), TooltipActivity.class);
+			intent.putExtra(TooltipActivity.TOOLTIP_URL_KEY, getToolTipUrl(item));
+			startActivity(intent);
+		}
+	};
+	
+	private String getToolTipUrl(D3Item item) {
+		return "http://" + mModel.getHeroModel().getServer() + D3Constants.ITEM_PARAM_URL + item.getToolTipParams();
 	}
 	
 	private void setupSkillsImages(FollowerView followerView, String followerKey) {
 		List<D3FollowerSkill> skills = mFollowers.get(followerKey).getD3FollowerSkills();
 		fillFollowerSkills(skills);
 		for(int i = 0; i < D3Constants.FOLLOWERS_SKILLS_HOLDERS_IDS.length; i++) {
-			TextView txtV = (TextView)followerView.findViewById(D3Constants.FOLLOWERS_SKILLS_HOLDERS_IDS[i]);
-			if(skills.get(i) == null){
-				txtV.setText(D3Constants.FOLLOWERS_SKILLS_ENABLED_LEVELS[i]);
+			TextView skillImage = (TextView)followerView.findViewById(D3Constants.FOLLOWERS_SKILLS_HOLDERS_IDS[i]);
+			TextView skillLabel = (TextView)followerView.findViewById(D3Constants.FOLLOWERS_SKILLS_HOLDERS_LABELS_IDS[i]);
+			if(skills.get(i) == null || skills.get(i).getIcon() == null){
+				//skillImage.setText(String.valueOf(D3Constants.FOLLOWERS_SKILLS_ENABLED_LEVELS[i]));
 			}else{
-				setImage(D3Constants.SKILL_ICON_URL + skills.get(i).getIcon() + ".png", txtV);
+				setImage(D3Constants.SKILL_SMALL_ICON_URL + skills.get(i).getIcon() + ".png", skillImage);
+				skillImage.setOnClickListener(new SkillClickListener(getSkillTipUrl(skills.get(i), mFollowers.get(followerKey).getSlug())));
+				skillLabel.setText(String.valueOf(skills.get(i).getName()));
 			}
+		}
+	}
+	
+	private String getSkillTipUrl(D3FollowerSkill skill, String followerSlug) {
+		return "http://" + mModel.getHeroModel().getServer() + D3Constants.SKILL_TOOL_TIP_URL 
+				+ followerSlug + "/" + skill.getSlug();
+	}
+	
+	private class SkillClickListener implements View.OnClickListener {
+		private String mToolTipUrl;
+		SkillClickListener(String toolTipUrl){
+			mToolTipUrl = toolTipUrl;
+		}
+		
+		@Override
+		public void onClick(View v) {
+			Intent intent = new Intent(getActivity(), TooltipActivity.class);
+			intent.putExtra(TooltipActivity.TOOLTIP_URL_KEY, mToolTipUrl);
+			startActivity(intent);
 		}
 	}
 	

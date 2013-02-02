@@ -24,10 +24,8 @@ import android.widget.TextView;
 
 public class SkillsAdapter extends ArrayAdapter<D3Skill> {
 	private MemoryCache mMemCache;
-	private String mServer;
 	public SkillsAdapter(Context context, int defaultResId, int resId, List<D3Skill> skills, String server){
 		super(context, defaultResId, resId, skills);
-		mServer = server;
 		mMemCache = MemoryCache.getInstance(context.getApplicationContext());
 	}
 	

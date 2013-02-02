@@ -25,6 +25,7 @@ public class D3Constants {
 	public static final String ITEM_PARAM_URL = ".battle.net/d3/en/tooltip/";
 	public static final String SKILL_TOOL_TIP_URL = ".battle.net/d3/en/tooltip/skill/";
 	public static final String SKILL_ICON_URL = "http://media.blizzard.com/d3/icons/skills/64/";
+	public static final String SKILL_SMALL_ICON_URL = "http://media.blizzard.com/d3/icons/skills/42/";
 	public static String getExternalImageDirectory(){
 		return Environment.getExternalStorageDirectory().getPath() + "/" + APP_FOLDER + "/images/";
 	}
@@ -36,6 +37,7 @@ public class D3Constants {
 		{R.id.gem1_bracers, R.id.gem2_bracers}, {R.id.gem1_rightFinger}, {R.id.gem1_leftFinger}, {R.id.gem1_offHand, R.id.gem2_offHand, R.id.gem3_offHand}, 
 		{R.id.gem1_mainHand, R.id.gem2_mainHand, R.id.gem3_mainHand}};
 	public static final int[] FOLLOWERS_SKILLS_HOLDERS_IDS = {R.id.skill_image_1, R.id.skill_image_2, R.id.skill_image_3, R.id.skill_image_4};
+	public static final int[] FOLLOWERS_SKILLS_HOLDERS_LABELS_IDS = {R.id.skill_label_1, R.id.skill_label_2, R.id.skill_label_3, R.id.skill_label_4};
 	public static final int[] FOLLOWERS_SKILLS_ENABLED_LEVELS = {5, 10, 15, 20};
 	public static final int[] FOLLOWERS_ITEMS_HOLDERS_IDS = {R.id.follower_main_hand, R.id.follower_off_hand, R.id.follower_left_finger, R.id.follower_right_finger,
 		R.id.follower_neck, R.id.special};

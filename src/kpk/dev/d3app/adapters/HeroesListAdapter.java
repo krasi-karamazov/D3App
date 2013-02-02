@@ -7,7 +7,6 @@ import kpk.dev.d3app.R;
 import kpk.dev.d3app.cache.MemoryCache;
 import kpk.dev.d3app.listeners.FileDownloadListener;
 import kpk.dev.d3app.models.accountmodels.HeroModel;
-import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.models.accountmodels.ProfileModel;
 import kpk.dev.d3app.tasks.FileDownloader;
 import kpk.dev.d3app.util.D3Constants;

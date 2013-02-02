@@ -64,7 +64,7 @@ public class GetServerStatusTask extends Thread {
 	private void getTags(List<Element> elements) {
 		for (Element segment : elements) {
 			final Region region = new Region();
-			final String regionName = segment.getAllElementsByClass("category").get(0).getTextExtractor().toString();
+			final String regionName = segment.getAllElementsByClass("header-3").get(0).getTextExtractor().toString();
 			region.setName(regionName);
 			final List<Server> servers = new ArrayList<Server>();
 			final List<Element> serversElements= segment.getAllElementsByClass("server");

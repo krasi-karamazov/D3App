@@ -74,8 +74,8 @@
 	            android:orientation="vertical">
 	            <TextView 
 			        android:id="@+id/skill_image_1"
-			        android:layout_width="match_parent" android:layout_height="wrap_content"
-			        android:maxWidth="42dp" android:maxHeight="42dp"/>
+			        android:layout_width="42dp" android:layout_height="42dp"
+			        android:gravity="center"/>
 	            <TextView 
 	                android:id="@+id/skill_label_1"
 	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
@@ -86,8 +86,8 @@
 	            android:orientation="vertical">
 	            <TextView 
 			        android:id="@+id/skill_image_2"
-			        android:layout_width="match_parent" android:layout_height="wrap_content"
-			        android:maxWidth="42dp" android:maxHeight="42dp"/>
+			        android:layout_width="42dp" android:layout_height="42dp"
+			        android:gravity="center"/>
 	            <TextView 
 	                android:id="@+id/skill_label_2"
 	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
@@ -98,8 +98,8 @@
 	            android:orientation="vertical">
 	            <TextView 
 			        android:id="@+id/skill_image_3"
-			        android:layout_width="match_parent" android:layout_height="wrap_content"
-			        android:maxWidth="42dp" android:maxHeight="42dp"/>
+			        android:layout_width="42dp" android:layout_height="42dp"
+			        android:gravity="center"/>
 	            <TextView 
 	                android:id="@+id/skill_label_3"
 	                android:layout_width="match_parent" android:layout_height="wrap_content"/>
@@ -110,8 +110,8 @@
 	            android:orientation="vertical">
 	            <TextView 
 			        android:id="@+id/skill_image_4"
-			        android:layout_width="match_parent" android:layout_height="wrap_content"
-			        android:maxWidth="42dp" android:maxHeight="42dp"/>
+			        android:layout_width="42dp" android:layout_height="42dp"
+			        android:gravity="center"/>
 	            <TextView 
 	                android:id="@+id/skill_label_4"
 	                android:layout_width="match_parent" android:layout_height="wrap_content"/>

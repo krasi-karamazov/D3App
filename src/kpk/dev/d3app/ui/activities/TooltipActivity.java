@@ -17,6 +17,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -34,6 +35,11 @@ public class TooltipActivity extends Activity {
 		setContentView(R.layout.dialog_background);
 		mToolTipUrl = getIntent().getExtras().getString(TOOLTIP_URL_KEY);
 		webView = (WebView)findViewById(R.id.details_view);
+		LayoutParams params = webView.getLayoutParams();
+		Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
+				.getDefaultDisplay();
+		params.height = (int) (0.70 * display.getHeight());
+		webView.setLayoutParams(params); // NOTE: Temporary fix
 		webView.setWebViewClient(new D3ToolTipClient());
 		webView.setBackgroundColor(Color.BLACK);
 		new Thread(getHtmlRunnable).start();
@@ -96,21 +102,6 @@ public class TooltipActivity extends Activity {
 									+ "</div></body></html>";
 							webView.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
 							webView.setInitialScale(getInitialScale());
-//							webView.loadData(strbString, "text/html; charset=utf-8", "US-ASCII");
-//							float scaling = 100;
-//							int display_width;
-//							DisplayMetrics dm = new DisplayMetrics();
-//							getWindowManager().getDefaultDisplay().getMetrics(dm);
-//							if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-//								display_width = dm.widthPixels;
-//							}else{
-//								display_width = dm.heightPixels;
-//							}
-//							
-//							scaling = (((float)display_width/370)*100); // 370 here is my container div width
-//							scaling = (int) Math.floor(scaling); 
-//							webView.setInitialScale((int)scaling);  
-//							webView.getSettings().setDefaultZoom(ZoomDensity.FAR);
 						}
 					});
 				}

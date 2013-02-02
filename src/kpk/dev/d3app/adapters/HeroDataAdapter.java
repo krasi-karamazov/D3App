@@ -40,7 +40,7 @@ public class HeroDataAdapter extends FragmentStatePagerAdapter {
 		}
 		if(position == 4){
 			fragment = new FollowersFragment();
-			((FollowersFragment)fragment).setData(mHeroModel.getFollowersModels());
+			((FollowersFragment)fragment).setData(mHeroModel);
 		}
 		return fragment;
 	}
