@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import kpk.dev.d3app.R;
 import kpk.dev.d3app.listeners.FileDownloadListener;
 import kpk.dev.d3app.models.accountmodels.D3Follower;
+import kpk.dev.d3app.models.accountmodels.D3FollowerSkill;
 import kpk.dev.d3app.models.accountmodels.D3Item;
 import kpk.dev.d3app.tasks.FileDownloader;
 import kpk.dev.d3app.util.D3Constants;
@@ -76,6 +80,7 @@ public class FollowersFragment extends AbstractFragment<Map<String, D3Follower>>
 		if(viewId >= 0){
 			
 			FollowerView followerView = (FollowerView)mRootView.findViewById(viewId);
+			setupSkillsImages(followerView, mapKeys.get(index));
 			Map<String, D3Item> followerItems = mFollowers.get(mapKeys.get(index)).getItems();
 			
 			for(int i = 0; i < D3Constants.FOLLOWERS_ITEMS_HOLDERS_IDS.length; i++) {
@@ -103,6 +108,25 @@ public class FollowersFragment extends AbstractFragment<Map<String, D3Follower>>
 		}
 	}
 	
+	private void setupSkillsImages(FollowerView followerView, String followerKey) {
+		List<D3FollowerSkill> skills = mFollowers.get(followerKey).getD3FollowerSkills();
+		fillFollowerSkills(skills);
+		for(int i = 0; i < D3Constants.FOLLOWERS_SKILLS_HOLDERS_IDS.length; i++) {
+			TextView txtV = (TextView)followerView.findViewById(D3Constants.FOLLOWERS_SKILLS_HOLDERS_IDS[i]);
+			if(skills.get(i) == null){
+				txtV.setText(D3Constants.FOLLOWERS_SKILLS_ENABLED_LEVELS[i]);
+			}else{
+				setImage(D3Constants.SKILL_ICON_URL + skills.get(i).getIcon() + ".png", txtV);
+			}
+		}
+	}
+	
+	private void fillFollowerSkills(List<D3FollowerSkill> skills) {
+		while(skills.size() < 4) {
+			skills.add(null);
+		}
+	}
+
 	private int getScreenDensity() {
 		DisplayMetrics metrics = new DisplayMetrics();    
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);    

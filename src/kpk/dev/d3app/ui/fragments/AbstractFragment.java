@@ -9,9 +9,11 @@ import kpk.dev.d3app.util.D3Constants;
 import kpk.dev.d3app.util.Utils;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public abstract class AbstractFragment<T> extends Fragment {
 	private MemoryCache mMemoryCache;
@@ -29,6 +31,26 @@ public abstract class AbstractFragment<T> extends Fragment {
 			new FileDownloader(getActivity().getApplicationContext()).downloadFile(getScreenDensity(), portraitUrl, portraitImage,new FileDownloadListener() {
 				public void fileDownloaded() {
 					imgView.setImageBitmap(mMemoryCache.getBitmapFromMemoryCache(portraitImage.getName()));
+				};
+			});
+		}
+	}
+	
+	@SuppressWarnings("deprecation")
+	protected final void setImage(final String portraitUrl, final TextView imgView) {
+		final File portraitImage = new File(D3Constants.getExternalImageDirectory() + Utils.getFileNameFromURL(portraitUrl));
+		Bitmap bmp = mMemoryCache.getBitmapFromMemoryCache(portraitImage.getName());
+		if(checkIfBitmapExistsOnDiskAndCache(portraitImage, bmp == null)){
+			bmp = null;
+		}
+		if(bmp != null) {
+			BitmapDrawable bmpDrawable = new BitmapDrawable(bmp);
+			imgView.setBackgroundDrawable(bmpDrawable);
+		}else{
+			new FileDownloader(getActivity().getApplicationContext()).downloadFile(getScreenDensity(), portraitUrl, portraitImage,new FileDownloadListener() {
+				public void fileDownloaded() {
+					BitmapDrawable bmpDrawable = new BitmapDrawable(mMemoryCache.getBitmapFromMemoryCache(portraitImage.getName()));
+					imgView.setBackgroundDrawable(bmpDrawable);
 				};
 			});
 		}
