@@ -9,7 +9,7 @@ import android.os.Environment;
 public class D3Constants {
 	public static Map<String, Integer> CLASS_RESOURCE_IMAGES;
 	public static final String[] regions = {"United States", "Europe", "Asia"};
-	public static final String SERVERS_PAGE_URL = "http://us.battle.net/d3/en/status";
+	public static final String SERVERS_PAGE_URL = "http://eu.battle.net/d3/en/status";
 	public static final String DATABASE_NAME = "D3AppDatabase";
 	public static final String SHARED_PREFERENCES_FILE = "d3_shared_prefs";
 	public static final int DATABASE_VERSION = 1;
@@ -36,6 +36,7 @@ public class D3Constants {
 		{R.id.gem1_bracers, R.id.gem2_bracers}, {R.id.gem1_rightFinger}, {R.id.gem1_leftFinger}, {R.id.gem1_offHand, R.id.gem2_offHand, R.id.gem3_offHand}, 
 		{R.id.gem1_mainHand, R.id.gem2_mainHand, R.id.gem3_mainHand}};
 	public static final int[] FOLLOWERS_SKILLS_HOLDERS_IDS = {R.id.skill_image_1, R.id.skill_image_2, R.id.skill_image_3, R.id.skill_image_4};
+	public static final int[] FOLLOWERS_SKILLS_ENABLED_LEVELS = {5, 10, 15, 20};
 	public static final int[] FOLLOWERS_ITEMS_HOLDERS_IDS = {R.id.follower_main_hand, R.id.follower_off_hand, R.id.follower_left_finger, R.id.follower_right_finger,
 		R.id.follower_neck, R.id.special};
 	public static final String[] FOLLOWERS_ITEMS_TYPES = {"mainHand", "offHand", "leftFinger", "rightFinger", "neck", "special"};

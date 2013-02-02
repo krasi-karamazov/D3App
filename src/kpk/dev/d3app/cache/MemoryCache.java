@@ -45,14 +45,18 @@ public class MemoryCache {
 	}
 	
 	public void addBitmapToCache(String key, Bitmap value) {
-		if(getBitmapFromMemoryCache(key)== null && value != null) {
-			mMemoryCache.put(key, value);
+		synchronized(mMemoryCache){
+			if(getBitmapFromMemoryCache(key)== null && value != null) {
+				mMemoryCache.put(key, value);
+			}
 		}
 	}
 	
 	public void removeBitmapFromCache(String key){
-		if(getBitmapFromMemoryCache(key) != null){
-			mMemoryCache.remove(key);
+		synchronized(mMemoryCache){
+			if(getBitmapFromMemoryCache(key) != null){
+				mMemoryCache.remove(key);
+			}
 		}
 	}
 	

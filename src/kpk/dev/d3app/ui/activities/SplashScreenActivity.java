@@ -53,7 +53,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 				}
 			}
 			mProgressBar.setVisibility(View.VISIBLE);
-			new GetServerStatusTask(this).start();
+			//new GetServerStatusTask(this).start();
 		}else{
 			if(!Utils.getAppSharedPreferences(getApplicationContext()).getBoolean(D3Constants.FIRST_LOGIN_COMPLETE_KEY, false)){
 				showInternetConnectivityWarningDialog();
