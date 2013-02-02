@@ -137,7 +137,7 @@ public class HeroSkillsFragment extends AbstractFragment<HeroModelDecorator> {
 		if(rune.getType().equals("a")){
 			runeDrawable = getResources().getDrawable(R.drawable.rune_a);
 		}else if(rune.getType().equals("b")){
-			runeDrawable = getResources().getDrawable(R.drawable.rune_c);
+			runeDrawable = getResources().getDrawable(R.drawable.rune_b);
 		}else if(rune.getType().equals("c")){
 			runeDrawable = getResources().getDrawable(R.drawable.rune_c);
 		}else if(rune.getType().equals("d")){
