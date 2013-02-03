@@ -9,11 +9,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-
-import kpk.dev.d3app.util.KPKLog;
-
 import android.content.ContentValues;
 
 public class D3Follower implements IProfileModel {
@@ -37,6 +32,7 @@ public class D3Follower implements IProfileModel {
 		return this.mStats;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@JsonAnySetter
 	public void handleUnknown(String key, Object value) {
 	    if(key.equalsIgnoreCase("skills")) {

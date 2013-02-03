@@ -45,6 +45,11 @@ public class ProfileDetailsActivity extends AbstractActivity {
 				displayData();
 			}
 		}
+
+		@Override
+		public void dataReady(IProfileModel model, boolean newObject,
+				String[] returnedArgs) {
+		}
 	};
 
 	private void displayData() {

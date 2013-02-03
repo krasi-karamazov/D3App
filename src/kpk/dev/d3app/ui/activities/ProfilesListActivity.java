@@ -93,6 +93,12 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 			mProfileList.setOnItemClickListener(mProfileListItemClickListener);
 			mProfileList.setOnItemLongClickListener(mProfileLongClickListener);
 		}
+
+		@Override
+		public void dataReady(IProfileModel model, boolean newObject,
+				String[] returnedArgs) {
+			
+		}
 	};
 
 	private View.OnClickListener addProfileListener = new View.OnClickListener() {

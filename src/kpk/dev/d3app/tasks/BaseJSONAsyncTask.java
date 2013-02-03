@@ -23,7 +23,6 @@ import kpk.dev.d3app.listeners.BaseDataListener;
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.models.accountmodels.IProfileModel;
 import kpk.dev.d3app.models.accountmodels.ProfileModel;
-import kpk.dev.d3app.util.KPKLog;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -32,6 +31,7 @@ import android.os.Bundle;
 public abstract class BaseJSONAsyncTask extends AsyncTask<Bundle, String, Void> {
 	public static final String BATTLE_TAG_BUNDLE_KEY = "battletagKey";
 	public static final String REGION_BUNDLE_KEY = "regionKey";
+	public static final String HERO_ID_BUNDLE_KEY = "hero_id";
 	private SQLiteDatabase mDatabase;
 	private boolean mResult;
 	private BaseDataListener mListener;
@@ -92,13 +92,17 @@ public abstract class BaseJSONAsyncTask extends AsyncTask<Bundle, String, Void> 
 	public static BaseJSONAsyncTask getTask(TaskType type, BaseDataListener aListener, SQLiteDatabase aDatabase) {
 		BaseJSONAsyncTask task = null;
 		if(type.name().equalsIgnoreCase(TaskType.CAREER.name())){
-			KPKLog.d("TASK TYPE IS CAREER");
 			task = new CareerAsyncTask(aListener, aDatabase);
 		}else if(type.name().equalsIgnoreCase(TaskType.DELETE.name())){
-			KPKLog.d("TASK TYPE IS DELETE");
 			return new DeleteProfileTask(aListener, aDatabase);
+		}else if(type.name().equalsIgnoreCase(TaskType.HERO.name())) {
+			task = new HeroAsyncTask(aListener, aDatabase);
 		}
 		return task;
+	}
+	
+	protected final SQLiteDatabase getDatabase(){
+		return mDatabase;
 	}
 	
 	@Override
@@ -107,7 +111,7 @@ public abstract class BaseJSONAsyncTask extends AsyncTask<Bundle, String, Void> 
 		mListener.dataReady(mProfileModel, mResult, null);
 	}
 	
-	protected final void saveFullHeroData(List<HeroModelDecorator> fullHeroData) {
+	protected final void saveFullHeroData(HeroModelDecorator fullHeroData) {
 		HeroDatabaseProcessor dbProcessor = new HeroDatabaseProcessor();
 		dbProcessor.saveHeroData(fullHeroData, mDatabase);
 	}

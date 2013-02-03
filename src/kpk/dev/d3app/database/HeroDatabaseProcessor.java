@@ -48,12 +48,10 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		HeroPassiveSkillsData;
 	}
 	
-	public synchronized void saveHeroData(List<HeroModelDecorator> models, SQLiteDatabase database) {
+	public synchronized void saveHeroData(HeroModelDecorator model, SQLiteDatabase database) {
 		database.beginTransaction();
 		try{
-			for(HeroModelDecorator model : models){
-				saveHeroDatatoDB(model, database);
-			}
+			saveHeroDatatoDB(model, database);
 			database.setTransactionSuccessful();
 		}finally{
 			database.endTransaction();
@@ -194,6 +192,9 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 			heroDecorator.setKills(getHeroKills(cursor));
 		}
 		cursor.close();
+		if(heroDecorator == null) {
+			return null;
+		}
 		heroDecorator.setItems(getItems(heroID, database, null, D3Item.TABLE_NAME));
 		heroDecorator.setSkills(getSkills(heroID, database));
 		heroDecorator.setHeroProgress(getHeroProgression(database, heroID));

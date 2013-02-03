@@ -152,7 +152,8 @@ public class Utils {
 		
 		timeStringBuilder.append("ago");
 		if(timeStringBuilder.length() == 3){
-			timeStringBuilder.insert(0, "0 hours ");
+			timeStringBuilder.delete(0, timeStringBuilder.length());
+			timeStringBuilder.insert(0, "Just now");
 		}
 		return timeStringBuilder.toString();
 	} 

@@ -1,13 +1,9 @@
 package kpk.dev.d3app.ui.fragments;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import kpk.dev.d3app.R;
 import kpk.dev.d3app.listeners.FileDownloadListener;

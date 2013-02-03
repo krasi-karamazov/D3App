@@ -38,24 +38,21 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 		try{
 			for(IProfileModel item : items) {
 				ProfileModel model = (ProfileModel)item;
-				ArtisanModel artsan = model.getArtisans().get(0);
-				KPKLog.d("Artisan " + artsan.getLevel());
 				if(profileExists(model, database)){
 					KPKLog.d("UPDATE INITIAL DATA");
-					String[] args = {model.getBattleTag(), model.getServer()};
-					database.update(ProfileModel.TABLE_NAME, item.getContentValues(), IProfileModel.PROFILE_TAG_COLUMN + "=? AND " + IProfileModel.SERVER_COLUMN + "=?", args);
+					deleteProfile(database, model.getBattleTag(), model.getServer());
 					result = false;
 				}else{
 					KPKLog.d("INSERT INITIAL DATA");
-					database.insert(ProfileModel.TABLE_NAME, "null", item.getContentValues());
 					mProfiles.add(model);
 					result = true;
 				}
-				insertProfileModelSummary(model.getHeroes(), database, model.getBattleTag(), model.getServer(), result, ProfileModelType.heroes);
-				insertProfileModelSummary(model.getArtisans(), database, model.getBattleTag(), model.getServer(), result, ProfileModelType.artisans);
-				insertProfileModelSummary(model.getHardcoreArtisans(), database, model.getBattleTag(), model.getServer(), result, ProfileModelType.hardcoreArtisans);
-				insertProgression(model.getProgression(), database, model.getBattleTag(), false, model.getServer(), result);
-				insertProgression(model.getHardcoreProgression(), database, model.getBattleTag(), true, model.getServer(), result);
+				database.insert(ProfileModel.TABLE_NAME, "null", item.getContentValues());
+				insertProfileModelSummary(model.getHeroes(), database, model.getBattleTag(), model.getServer(), ProfileModelType.heroes);
+				insertProfileModelSummary(model.getArtisans(), database, model.getBattleTag(), model.getServer(), ProfileModelType.artisans);
+				insertProfileModelSummary(model.getHardcoreArtisans(), database, model.getBattleTag(), model.getServer(), ProfileModelType.hardcoreArtisans);
+				insertProgression(model.getProgression(), database, model.getBattleTag(), false, model.getServer());
+				insertProgression(model.getHardcoreProgression(), database, model.getBattleTag(), true, model.getServer());
 			}
 			database.setTransactionSuccessful();
 		}finally{
@@ -72,7 +69,8 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 		return result;
 	}
 
-	private synchronized void insertProgression(ProgressionModel progression, SQLiteDatabase database, String battleTag, boolean hardcore, String server, boolean result) {
+	private synchronized void insertProgression(ProgressionModel progression, SQLiteDatabase database, String battleTag, 
+			boolean hardcore, String server) {
 		progression.setParentProfileTag(battleTag);
 		final List<D3Mode> d3modes = new ArrayList<D3Mode>();
 		d3modes.add(progression.getNormal());
@@ -87,15 +85,8 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 				contentValues.put(IProfileModel.PROFILE_TAG_COLUMN, battleTag);
 				contentValues.put(IProfileModel.SERVER_COLUMN, server);
 				contentValues.put(D3Mode.MODE_NAME_COLUMN, D3Constants.mModes[i]);
-				if(result){
-					database.insert((hardcore)?ProgressionModel.HARDCORE_TABLE_NAME:ProgressionModel.TABLE_NAME, "null", contentValues);
-				}else{
-					final String[] whereArgs = {battleTag, server, D3Constants.mModes[i]};
-					database.update((hardcore)?ProgressionModel.HARDCORE_TABLE_NAME:ProgressionModel.TABLE_NAME, contentValues, 
-							IProfileModel.PROFILE_TAG_COLUMN + "=? AND " + IProfileModel.SERVER_COLUMN + "=?" + " AND " 
-							+ D3Mode.MODE_NAME_COLUMN + "=?", whereArgs);
-				}
-				
+
+				database.insert((hardcore)?ProgressionModel.HARDCORE_TABLE_NAME:ProgressionModel.TABLE_NAME, "null", contentValues);
 			}
 			database.setTransactionSuccessful();
 		}finally{
@@ -106,7 +97,7 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 	
 
 	private  synchronized <T extends IProfileModel> void insertProfileModelSummary(List<T> list, SQLiteDatabase database, String battleTag, 
-			String server, boolean result, ProfileModelType type) {
+			String server, ProfileModelType type) {
 		String tableName = determineTableName(type);
 		database.beginTransaction();
 		try{
@@ -118,22 +109,7 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 				}
 				profileModel.setParentProfileTag(battleTag);
 				profileModel.setServer(server);
-				if(result){
-					database.insert(tableName, "null", profileModel.getContentValues());
-				}else{
-					String profileIDStringArg = null;
-					String profileIDArg = null;
-					if(profileModel instanceof HeroModel){
-						profileIDStringArg = HeroModel.HERO_ID_COLUMN + "=?";
-						profileIDArg = Long.valueOf(((HeroModel)profileModel).getID()).toString();
-					}else{
-						profileIDStringArg = ArtisanModel.SLUG_COLUMN + "=?";
-						profileIDArg = ((ArtisanModel)profileModel).getSlug();
-					}
-					String[] whereArgs = {battleTag, server, profileIDArg};
-					database.update(tableName, profileModel.getContentValues(), IProfileModel.PROFILE_TAG_COLUMN + "=? AND " 
-					+ IProfileModel.SERVER_COLUMN + "=? AND " + profileIDStringArg, whereArgs);
-				}
+				database.insert(tableName, "null", profileModel.getContentValues());
 			}
 			database.setTransactionSuccessful();
 		}finally{
@@ -265,43 +241,81 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 	}
 
 	private synchronized List<HeroModel> getHeroes(SQLiteDatabase database, String battleTag, String server) {
-		Cursor heroCursor = database.rawQuery("SELECT * FROM " + HeroModel.TABLE_NAME + " WHERE " 
+		Cursor cursor = database.rawQuery("SELECT * FROM " + HeroModel.TABLE_NAME + " WHERE " 
 				+ IProfileModel.PROFILE_TAG_COLUMN + "='" + battleTag 
 				+ "' AND " + IProfileModel.SERVER_COLUMN + "='" + server +"'", null);
 		final List<HeroModel> heroes = new ArrayList<HeroModel>();
 		
-		int heroIDColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_ID_COLUMN);
-		int heroNameColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_NAME_COLUMN);
-		int heroClassColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_CLASS_COLUMN);
-		int heroGenderColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_GENDER_COLUMN);
-		int heroHardcoreColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_HARDCORE_COLUMN);
-		int heroLevelColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_LEVEL_COLUMN);
-		int heroParagonColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_PARAGON_LEVEL_COLUMN);
-		int heroLastUpdatedColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_LAST_UPDATED_COLUMN);
-		int heroIsDeadColumnIndex = heroCursor.getColumnIndexOrThrow(HeroModel.HERO_DEAD_COLUMN);
-		int heroParentProfileTag = heroCursor.getColumnIndexOrThrow(IProfileModel.PROFILE_TAG_COLUMN);
-		int heroServerColumnIndex = heroCursor.getColumnIndexOrThrow(IProfileModel.SERVER_COLUMN);
+		int heroIDColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_ID_COLUMN);
+		int heroNameColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_NAME_COLUMN);
+		int heroClassColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_CLASS_COLUMN);
+		int heroGenderColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_GENDER_COLUMN);
+		int heroHardcoreColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_HARDCORE_COLUMN);
+		int heroLevelColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_LEVEL_COLUMN);
+		int heroParagonColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_PARAGON_LEVEL_COLUMN);
+		int heroLastUpdatedColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_LAST_UPDATED_COLUMN);
+		int heroIsDeadColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_DEAD_COLUMN);
+		int heroParentProfileTag = cursor.getColumnIndexOrThrow(IProfileModel.PROFILE_TAG_COLUMN);
+		int heroServerColumnIndex = cursor.getColumnIndexOrThrow(IProfileModel.SERVER_COLUMN);
 		
-		while(heroCursor.moveToNext()) {
+		while(cursor.moveToNext()) {
 			HeroModel heroModel = new HeroModel();
-			heroModel.setID(heroCursor.getLong(heroIDColumnIndex));
-			heroModel.setName(heroCursor.getString(heroNameColumnIndex));
-			heroModel.setclass(heroCursor.getString(heroClassColumnIndex));
-			HeroModel.Gender gender =  (heroCursor.getString(heroGenderColumnIndex).equalsIgnoreCase("female"))?HeroModel.Gender.female:HeroModel.Gender.male;
+			heroModel.setID(cursor.getLong(heroIDColumnIndex));
+			heroModel.setName(cursor.getString(heroNameColumnIndex));
+			heroModel.setclass(cursor.getString(heroClassColumnIndex));
+			HeroModel.Gender gender =  (cursor.getString(heroGenderColumnIndex).equalsIgnoreCase("female"))?HeroModel.Gender.female:HeroModel.Gender.male;
 			heroModel.setGender(gender);
-			heroModel.setHardcore((heroCursor.getInt(heroHardcoreColumnIndex) == 0)?false:true);
-			heroModel.setLevel(heroCursor.getInt(heroLevelColumnIndex));
-			heroModel.setParagonLevel(heroCursor.getInt(heroParagonColumnIndex));
-			heroModel.setLastUpdated(heroCursor.getLong(heroLastUpdatedColumnIndex));
-			heroModel.setDead((heroCursor.getInt(heroIsDeadColumnIndex) == 0)?false:true);
-			heroModel.setParentProfileTag(heroCursor.getString(heroParentProfileTag));
+			heroModel.setHardcore((cursor.getInt(heroHardcoreColumnIndex) == 0)?false:true);
+			heroModel.setLevel(cursor.getInt(heroLevelColumnIndex));
+			heroModel.setParagonLevel(cursor.getInt(heroParagonColumnIndex));
+			heroModel.setLastUpdated(cursor.getLong(heroLastUpdatedColumnIndex));
+			heroModel.setDead((cursor.getInt(heroIsDeadColumnIndex) == 0)?false:true);
+			heroModel.setParentProfileTag(cursor.getString(heroParentProfileTag));
 			heroModel.setPortrait(ProfileModel.HERO_PORTRAIT_URL + Utils.removeHiphen(heroModel.getclass()) + "_" 
 					+ heroModel.getGender().name() + ".png");
-			heroModel.setServer(heroCursor.getString(heroServerColumnIndex));
+			heroModel.setServer(cursor.getString(heroServerColumnIndex));
 			heroes.add(heroModel);
 		}
-		heroCursor.close();
+		cursor.close();
 		return heroes;
+	}
+	
+	public synchronized HeroModel getHeroById(SQLiteDatabase database, String battleTag, String server, long heroId) {
+		Cursor cursor = database.rawQuery("SELECT * FROM " + HeroModel.TABLE_NAME + " WHERE " 
+				+ IProfileModel.PROFILE_TAG_COLUMN + "='" + battleTag 
+				+ "' AND " + HeroModel.HERO_ID_COLUMN + "='" + heroId + "' AND " + IProfileModel.SERVER_COLUMN + "='" + server +"'", null);
+		int heroIDColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_ID_COLUMN);
+		int heroNameColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_NAME_COLUMN);
+		int heroClassColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_CLASS_COLUMN);
+		int heroGenderColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_GENDER_COLUMN);
+		int heroHardcoreColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_HARDCORE_COLUMN);
+		int heroLevelColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_LEVEL_COLUMN);
+		int heroParagonColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_PARAGON_LEVEL_COLUMN);
+		int heroLastUpdatedColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_LAST_UPDATED_COLUMN);
+		int heroIsDeadColumnIndex = cursor.getColumnIndexOrThrow(HeroModel.HERO_DEAD_COLUMN);
+		int heroParentProfileTag = cursor.getColumnIndexOrThrow(IProfileModel.PROFILE_TAG_COLUMN);
+		int heroServerColumnIndex = cursor.getColumnIndexOrThrow(IProfileModel.SERVER_COLUMN);
+		
+		if(cursor.moveToFirst()){
+			HeroModel heroModel = new HeroModel();
+			heroModel.setID(cursor.getLong(heroIDColumnIndex));
+			heroModel.setName(cursor.getString(heroNameColumnIndex));
+			heroModel.setclass(cursor.getString(heroClassColumnIndex));
+			HeroModel.Gender gender =  (cursor.getString(heroGenderColumnIndex).equalsIgnoreCase("female"))?HeroModel.Gender.female:HeroModel.Gender.male;
+			heroModel.setGender(gender);
+			heroModel.setHardcore((cursor.getInt(heroHardcoreColumnIndex) == 0)?false:true);
+			heroModel.setLevel(cursor.getInt(heroLevelColumnIndex));
+			heroModel.setParagonLevel(cursor.getInt(heroParagonColumnIndex));
+			heroModel.setLastUpdated(cursor.getLong(heroLastUpdatedColumnIndex));
+			heroModel.setDead((cursor.getInt(heroIsDeadColumnIndex) == 0)?false:true);
+			heroModel.setParentProfileTag(cursor.getString(heroParentProfileTag));
+			heroModel.setPortrait(ProfileModel.HERO_PORTRAIT_URL + Utils.removeHiphen(heroModel.getclass()) + "_" 
+					+ heroModel.getGender().name() + ".png");
+			heroModel.setServer(cursor.getString(heroServerColumnIndex));
+			return heroModel;
+		}
+			
+		return null;
 	}
 	
 	public synchronized String[] deleteProfile(SQLiteDatabase database, String battleTag, String server){

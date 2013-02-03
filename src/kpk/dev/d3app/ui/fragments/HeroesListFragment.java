@@ -4,7 +4,9 @@ import java.util.List;
 
 import kpk.dev.d3app.R;
 import kpk.dev.d3app.adapters.HeroesListAdapter;
+import kpk.dev.d3app.listeners.DataReadyListener;
 import kpk.dev.d3app.models.accountmodels.HeroModel;
+import kpk.dev.d3app.models.accountmodels.IProfileModel;
 import kpk.dev.d3app.tasks.GetHeroDataTask;
 import kpk.dev.d3app.ui.activities.HeroDetailsActivity;
 import android.content.Intent;
@@ -15,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class HeroesListFragment extends AbstractFragment<List<HeroModel>> {
+public class HeroesListFragment extends AbstractFragment<List<HeroModel>> implements DataReadyListener {
 	private List<HeroModel> mHeroes;
 	private ListView mListView;
 	private HeroesListAdapter mAdapter;
@@ -46,10 +48,21 @@ public class HeroesListFragment extends AbstractFragment<List<HeroModel>> {
 		public void onItemClick(AdapterView<?> list, View item, int position, long id) {
 			final Bundle bundle = new Bundle();
 			bundle.putLong(GetHeroDataTask.HERO_ID_BUNDLE_KEY, mHeroes.get(position).getID());
+			bundle.putString(GetHeroDataTask.HERO_SERVER_BUNDLE_KEY, mHeroes.get(position).getServer());
+			bundle.putString(GetHeroDataTask.HERO_PROFILE_TAG, mHeroes.get(position).getParentProfileTag());
 			Intent intent = new Intent(getActivity(), HeroDetailsActivity.class);
 			intent.putExtras(bundle);
 			startActivity(intent);
 		};
 	};
+	
+	@Override
+	public void dataReadyListener(List<IProfileModel> models) {
+		
+	}
 
+	@Override
+	public void dataReady(IProfileModel model, boolean newObject,
+			String[] returnedArgs) {
+	}
 }

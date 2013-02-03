@@ -2,7 +2,6 @@ package kpk.dev.d3app.widgets;
 
 import kpk.dev.d3app.R;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -78,6 +77,7 @@ public class ActiveSkillView extends RelativeLayout {
 		return mRuneName;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void setSkillNumber(Drawable skillNumberDrawable, int number){
 		if(number > 0){
 			mSkillNumber.setText(Integer.valueOf(number).toString());

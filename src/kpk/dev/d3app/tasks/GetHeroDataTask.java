@@ -14,6 +14,8 @@ import android.os.Bundle;
 
 public class GetHeroDataTask extends AsyncTask<Bundle, String, List<IProfileModel>> {
 	public static final String HERO_ID_BUNDLE_KEY = "hero_id_key";
+	public static final String HERO_SERVER_BUNDLE_KEY = "hero_server_key";
+	public static final String HERO_PROFILE_TAG = "hero_profile_tag_key";
 	public static final String FOLLOWER_SLUG_BUNDLE_KEY = "follower_slug_key";
 	private HeroDatabaseProcessor mDatabaseProcessor;
 	private DataReadyListener mListener;

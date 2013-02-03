@@ -13,7 +13,8 @@ public class D3Constants {
 	public static final String DATABASE_NAME = "D3AppDatabase";
 	public static final String SHARED_PREFERENCES_FILE = "d3_shared_prefs";
 	public static final int DATABASE_VERSION = 1;
-	public static final int PROGRESS_INCREMENT = 10;
+	public static int PROGRESS_INCREMENT = 10;
+	public static int PROGRESS_STEPS_MAX = 5;
 	public static final String FIRST_LOGIN_COMPLETE_KEY = "first_login";
 	public static final String[] mModes = {"normal", "nightmare", "hell", "inferno"};
 	public static String[] FOLLOWERS_KEYS_ARRAY = {"templar", "scoundrel", "enchantress"};

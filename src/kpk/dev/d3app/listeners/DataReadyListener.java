@@ -4,6 +4,6 @@ import java.util.List;
 
 import kpk.dev.d3app.models.accountmodels.IProfileModel;
 
-public interface DataReadyListener {
+public interface DataReadyListener extends BaseDataListener {
 	void dataReadyListener(List<IProfileModel> models);
 }

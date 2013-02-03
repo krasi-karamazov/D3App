@@ -2,8 +2,6 @@ package kpk.dev.d3app.widgets;
 
 import java.util.List;
 
-import kpk.dev.d3app.util.KPKLog;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;

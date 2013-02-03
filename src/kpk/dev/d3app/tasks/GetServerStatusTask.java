@@ -28,7 +28,6 @@ public class GetServerStatusTask extends Thread {
 	
 	@Override
 	public void run() {
-		super.run();
 		mListener.serverStatusParseProgress();
 		MicrosoftConditionalCommentTagTypes.register();
 		MasonTagTypes.register();

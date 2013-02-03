@@ -28,6 +28,8 @@ public class TooltipActivity extends Activity {
 	private String mToolTipUrl;
 	private StringBuilder strBuilder = new StringBuilder();
 	public static final String TOOLTIP_URL_KEY = "tooltip_url_key";
+	
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
