@@ -1,7 +1,7 @@
 package kpk.dev.d3app.ui.activities;
 
 import kpk.dev.d3app.R;
-import kpk.dev.d3app.application.D3ApplicationBase;
+import kpk.dev.d3app.application.D3Application;
 import kpk.dev.d3app.listeners.DatabaseReadyListener;
 import kpk.dev.d3app.services.DatabaseService;
 import kpk.dev.d3app.services.DatabaseService.LocalBinder;
@@ -17,11 +17,11 @@ import android.support.v4.app.FragmentActivity;
 public abstract class AbstractActivity extends FragmentActivity implements DatabaseReadyListener {
 	private SQLiteDatabase mDatabase;
 	private boolean mBound;
-	private D3ApplicationBase mApplicationBase;
+	private D3Application mApplicationBase;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mApplicationBase = (D3ApplicationBase)getApplication();
+		mApplicationBase = (D3Application)getApplication();
 		Intent serviceIntent = new Intent(this, DatabaseService.class);
 		overridePendingTransition(R.anim.activity_anim_exit, R.anim.activity_anim_enter);
 		if(!mBound){
@@ -38,7 +38,7 @@ public abstract class AbstractActivity extends FragmentActivity implements Datab
 		initComponents();
 	}
 	
-	final public D3ApplicationBase getApplicationBase(){
+	final public D3Application getApplicationBase(){
 		return mApplicationBase;
 	}
 	

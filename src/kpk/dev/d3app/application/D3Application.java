@@ -9,7 +9,7 @@ import kpk.dev.d3app.util.Utils;
 import android.app.Application;
 import android.widget.Toast;
 
-public class D3Application extends Application implements D3ApplicationBase {
+public class D3Application extends Application {
 
 	@Override
 	public void onCreate() {

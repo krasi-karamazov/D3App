@@ -12,6 +12,8 @@ public class D3Constants {
 	public static final String SERVERS_PAGE_URL = "http://eu.battle.net/d3/en/status";
 	public static final String DATABASE_NAME = "D3AppDatabase";
 	public static final String SHARED_PREFERENCES_FILE = "d3_shared_prefs";
+	public static final String UPDATE_PERIOD_KEY = "update_period";
+	public static final String LAST_UPDATE_TIME_KEY = "last_update_time";
 	public static final int DATABASE_VERSION = 1;
 	public static int PROGRESS_INCREMENT = 10;
 	public static int PROGRESS_STEPS_MAX = 5;
