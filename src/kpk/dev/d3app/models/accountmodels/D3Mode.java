@@ -3,6 +3,8 @@ package kpk.dev.d3app.models.accountmodels;
 import java.util.ArrayList;
 import java.util.List;
 
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
+
 import android.content.ContentValues;
 
 public class D3Mode implements IProfileModel {

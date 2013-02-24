@@ -7,6 +7,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import kpk.dev.d3app.util.Utils;
 
 import android.content.ContentValues;
@@ -64,13 +65,13 @@ public class ProfileModel implements IProfileModel {
 	}
 	
 	public enum ProgressionType{
-		hardcore(), 
-		normal();
+		hardcore, 
+		normal;
 	};
 	
 	public enum ArtisanType{
-		blacksmith(), 
-		jeweler();
+		blacksmith, 
+		jeweler;
 	};
 	
 	public static String getHeroPortrait(long heroID, ProfileModel profile) {
@@ -217,7 +218,7 @@ public class ProfileModel implements IProfileModel {
 	
 	public List<Boolean> getProgressionBooleanList(ProgressionType type) {
 		final List<Boolean> completionList = new ArrayList<Boolean>();
-		if(type.name().equalsIgnoreCase(ProgressionType.normal.name())){
+		if(type == ProgressionType.normal){
 			completionList.addAll(getProgression().getNormal().getActsCompletion());
 			completionList.addAll(getProgression().getNightmare().getActsCompletion());
 			completionList.addAll(getProgression().getHell().getActsCompletion());
@@ -235,7 +236,7 @@ public class ProfileModel implements IProfileModel {
 	public ArtisanModel getArtisan(ArtisanType type, boolean hardcore) {
 		String slug = null;
 		ArtisanModel artisanResult = null;
-		if(type.name().equalsIgnoreCase(ArtisanType.blacksmith.name())){
+		if(type == ArtisanType.blacksmith){
 			slug = ArtisanType.blacksmith.name();
 		}else{
 			slug = ArtisanType.jeweler.name();

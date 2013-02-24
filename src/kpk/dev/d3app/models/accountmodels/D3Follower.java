@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
+
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import android.content.ContentValues;
 

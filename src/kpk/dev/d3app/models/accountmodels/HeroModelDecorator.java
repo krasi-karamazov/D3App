@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
+
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

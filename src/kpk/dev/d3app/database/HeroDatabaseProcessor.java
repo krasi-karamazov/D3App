@@ -19,9 +19,9 @@ import kpk.dev.d3app.models.accountmodels.D3Skill;
 import kpk.dev.d3app.models.accountmodels.HeroModel;
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.models.accountmodels.HeroProgressionModel;
-import kpk.dev.d3app.models.accountmodels.IProfileModel;
 import kpk.dev.d3app.models.accountmodels.ProfileModel;
 import kpk.dev.d3app.models.accountmodels.SkillsModel;
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import kpk.dev.d3app.util.D3Constants;
 import kpk.dev.d3app.util.Utils;
 import android.content.ContentValues;
@@ -83,9 +83,6 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 			saveFollowerSkills(follower.getSkillsContentValues(), database);
 			saveFollowerItems(follower.getItemsContentValues(), database);
 		}
-//		for(D3Follower follower : followers) {
-
-//		}
 	}
 	
 	private void saveFollowerItems(List<ContentValues> itemsContentValues, SQLiteDatabase database) {
@@ -167,7 +164,7 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 	}
 
 	public synchronized IProfileModel getHeroData(HeroDataType dataType, long heroID, String followerSlug, SQLiteDatabase database) {
-		if(dataType.name().equalsIgnoreCase(HeroDataType.BasicHeroData.name())){
+		if(dataType == HeroDataType.BasicHeroData){
 			return getHeroData(heroID, database);
 		}		
 		return null;
@@ -416,11 +413,10 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		String heroValuesString;
 		String[] keysArray;
 		String[] valuesArray;
-		if(type.name().equalsIgnoreCase(MapDataType.Stats.name())) {
+		if(type == MapDataType.Stats) {
 			keysColumnIndex = cursor.getColumnIndexOrThrow(HeroModelDecorator.STATS_KEYS_COLUMN);
 			valuesColumnIndex = cursor.getColumnIndexOrThrow(HeroModelDecorator.STATS_VALUES_COLUMN);
-		}else if(type.name().equalsIgnoreCase(MapDataType.Kills.name())) {
-			
+		}else if(type == MapDataType.Kills) {
 			keysColumnIndex = cursor.getColumnIndexOrThrow(HeroModelDecorator.HERO_KILLS_KEYS_COLUMN);
 			valuesColumnIndex = cursor.getColumnIndexOrThrow(HeroModelDecorator.HERO_KILLS_VALUES_COLUMN);
 		}
@@ -432,9 +428,9 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		
 		for(int i = 0; i < keysArray.length; i++) {
 			if(keysArray[i]!= null && keysArray[i].length() > 0){
-				if(type.name().equalsIgnoreCase(MapDataType.Kills.name())){
+				if(type == MapDataType.Kills){
 					map.put(keysArray[i], Integer.valueOf(valuesArray[i]));	
-				}else if(type.name().equalsIgnoreCase(MapDataType.Stats.name())){
+				}else if(type == MapDataType.Stats){
 					map.put(keysArray[i], Double.valueOf(valuesArray[i]));
 				}
 			}

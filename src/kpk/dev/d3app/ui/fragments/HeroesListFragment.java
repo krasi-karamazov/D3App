@@ -6,7 +6,7 @@ import kpk.dev.d3app.R;
 import kpk.dev.d3app.adapters.HeroesListAdapter;
 import kpk.dev.d3app.listeners.DataReadyListener;
 import kpk.dev.d3app.models.accountmodels.HeroModel;
-import kpk.dev.d3app.models.accountmodels.IProfileModel;
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import kpk.dev.d3app.tasks.GetHeroDataTask;
 import kpk.dev.d3app.ui.activities.HeroDetailsActivity;
 import android.content.Intent;

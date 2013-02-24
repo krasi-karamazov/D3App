@@ -1,5 +1,6 @@
 package kpk.dev.d3app.models.accountmodels;
 
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import android.content.ContentValues;
 
 import com.fasterxml.jackson.annotation.JsonGetter;

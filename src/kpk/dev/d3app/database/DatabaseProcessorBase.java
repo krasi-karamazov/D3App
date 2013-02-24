@@ -5,8 +5,8 @@ import java.util.List;
 import kpk.dev.d3app.models.accountmodels.D3Act;
 import kpk.dev.d3app.models.accountmodels.D3Mode;
 import kpk.dev.d3app.models.accountmodels.HeroProgressionModel;
-import kpk.dev.d3app.models.accountmodels.IProfileModel;
 import kpk.dev.d3app.models.accountmodels.ProgressionModel;
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 

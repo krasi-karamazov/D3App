@@ -7,7 +7,7 @@ import kpk.dev.d3app.adapters.HeroDataAdapter;
 import kpk.dev.d3app.database.HeroDatabaseProcessor.HeroDataType;
 import kpk.dev.d3app.listeners.DataReadyListener;
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
-import kpk.dev.d3app.models.accountmodels.IProfileModel;
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import kpk.dev.d3app.tasks.BaseJSONAsyncTask;
 import kpk.dev.d3app.tasks.GetHeroDataTask;
 import kpk.dev.d3app.tasks.HeroAsyncTask;

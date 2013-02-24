@@ -6,7 +6,7 @@ import java.util.List;
 import kpk.dev.d3app.database.HeroDatabaseProcessor;
 import kpk.dev.d3app.database.HeroDatabaseProcessor.HeroDataType;
 import kpk.dev.d3app.listeners.DataReadyListener;
-import kpk.dev.d3app.models.accountmodels.IProfileModel;
+import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
