@@ -22,7 +22,7 @@ public class WarningDialogFragment extends BaseDialog {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(getArguments().getInt(DIALOG_LAYOUT_KEY), container, false);
-		Utils.setFont((ViewGroup)rootView);
+		//Utils.setFont((ViewGroup)titleView);
 		final TextView titleView = (TextView)rootView.findViewById(R.id.dialog_title);
 		titleView.setTypeface(Utils.getFont(getActivity()));
 		final TextView messageView = (TextView)rootView.findViewById(R.id.dialog_message);

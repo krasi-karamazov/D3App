@@ -15,6 +15,7 @@
 	<string name="add_battletag_dialog_title">Add profile</string>
 	<string name="connectivity_alert_dialog_title">Error</string>
 	<string name="connectivity_alert_dialog_message">Cannot establish connection with battle.net servers. The app will now close.</string>
+	<string name="data_download_error">The data cannot be downloaded at this time, please check if the server is down (from the home screen).</string>
 	<string name="battletag_hint">BattleTag(E.g. Straton#1)</string>
 	<string name="us_server_label">US</string>
 	<string name="eu_server_label">EU</string>
@@ -36,5 +37,6 @@
 	<string name="dh_label">Demon Hunter</string>
 	<string name="wizard_label">Wizard</string>
 	<string name="wd_label">Witch Doctor</string>
-	
+	<string name="update_interval_title">Update interval</string>
+	<string name="images_cleanup_title">Images cleanup</string>
 </resources>

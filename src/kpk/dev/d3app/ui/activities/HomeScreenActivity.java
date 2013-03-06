@@ -44,16 +44,16 @@ public class HomeScreenActivity extends AbstractActivity{
 					break;
 			
 				case R.id.server_checker_button:
-					startActivity(new Intent(HomeScreenActivity.this, ServerCheckerActivty.class));
+					startActivity(new Intent(HomeScreenActivity.this, ServersViewerActivity.class));
 					break;
 					
 				case R.id.settings_button:
+					startActivity(new Intent(HomeScreenActivity.this, DiabloPreferenceActivity.class));
 					break;
 					
 				case R.id.about_button:
 					break;
 			}
-			//showAccountDialog();
 		}
 	};
 }

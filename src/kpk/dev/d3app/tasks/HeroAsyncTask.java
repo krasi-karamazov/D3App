@@ -45,6 +45,9 @@ public class HeroAsyncTask extends BaseJSONAsyncTask {
 	
 	private synchronized void readAndParseHeroJSON(String server, String battleTag, HeroModel hero) {
 		HeroModelDecorator decorator = getFullHeroModel(hero, battleTag);
+		if(decorator == null){
+			return;
+		}
 		Map<String, D3Item> items = decorator.getItems();
 		Set<String> keys = items.keySet();
 		for(String s : keys){

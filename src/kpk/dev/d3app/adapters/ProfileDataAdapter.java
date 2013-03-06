@@ -18,6 +18,7 @@ public class ProfileDataAdapter extends FragmentStatePagerAdapter {
 	
 	@Override
 	public Fragment getItem(int position) {
+		if(mProfile == null) return new Fragment();
 		Fragment fragment = null;
 		if(position == 0){
 			fragment = new ProfileDetailsFragment();

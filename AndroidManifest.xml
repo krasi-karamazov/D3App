@@ -28,10 +28,11 @@
         <activity android:name=".ui.activities.TooltipActivity" android:theme="@android:style/Theme.Dialog"></activity>
         <service android:name=".services.DatabaseService"></service>
         <activity android:name="kpk.dev.d3app.ui.activities.HomeScreenActivity"></activity>
-        <activity android:name=".ui.activities.ServerCheckerActivty"></activity>
+        <activity android:name=".ui.activities.ServersViewerActivity"></activity>
         <activity android:name="kpk.dev.d3app.ui.activities.ProfilesListActivity"></activity>
         <activity android:name=".ui.activities.ProfileDetailsActivity"></activity>
         <activity android:name=".ui.activities.HeroDetailsActivity"></activity>
+        <activity android:name=".ui.activities.DiabloPreferenceActivity"></activity>
     </application>
 
 </manifest>

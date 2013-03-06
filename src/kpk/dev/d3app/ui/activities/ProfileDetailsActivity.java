@@ -11,6 +11,7 @@ import kpk.dev.d3app.tasks.ModelType;
 import kpk.dev.d3app.tasks.ReadRecordsTask;
 import kpk.dev.d3app.util.Utils;
 import android.os.Bundle;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 
@@ -54,7 +55,7 @@ public class ProfileDetailsActivity extends AbstractActivity {
 
 	private void displayData() {
 		mViewPager = (ViewPager)findViewById(R.id.profile_data_pager);
-		final PagerTitleStrip titleStrip = (PagerTitleStrip)findViewById(R.id.pager_title_strip);
+		final PagerTabStrip titleStrip = (PagerTabStrip)findViewById(R.id.pager_title_strip);
 		Utils.setFont(titleStrip);
 		mProfileDataAdapter = new ProfileDataAdapter(getSupportFragmentManager(), mProfile);
 		mViewPager.setAdapter(mProfileDataAdapter);

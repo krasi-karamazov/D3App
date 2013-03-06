@@ -23,6 +23,7 @@ import kpk.dev.d3app.listeners.BaseDataListener;
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.models.accountmodels.ProfileModel;
 import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
+import kpk.dev.d3app.util.KPKLog;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -79,23 +80,18 @@ public abstract class BaseJSONAsyncTask extends AsyncTask<Bundle, String, Void> 
 			mProfileModel = profile;
 			return mProfileModel;
 			
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+		} catch (Exception e) {
+			return null;
+		} 
 	}
 	
 	public static BaseJSONAsyncTask getTask(TaskType type, BaseDataListener aListener, SQLiteDatabase aDatabase) {
 		BaseJSONAsyncTask task = null;
-		if(type.name().equalsIgnoreCase(TaskType.CAREER.name())){
+		if(type.equals(TaskType.CAREER)){
 			task = new CareerAsyncTask(aListener, aDatabase);
-		}else if(type.name().equalsIgnoreCase(TaskType.DELETE.name())){
+		}else if(type.equals(TaskType.DELETE)){
 			return new DeleteProfileTask(aListener, aDatabase);
-		}else if(type.name().equalsIgnoreCase(TaskType.HERO.name())) {
+		}else if(type.equals(TaskType.HERO)) {
 			task = new HeroAsyncTask(aListener, aDatabase);
 		}
 		return task;

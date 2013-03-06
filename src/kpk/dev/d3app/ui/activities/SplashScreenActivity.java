@@ -23,6 +23,7 @@ import kpk.dev.d3app.ui.fragments.BaseDialog.DialogType;
 import kpk.dev.d3app.ui.fragments.WarningDialogFragment;
 import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
 import kpk.dev.d3app.util.D3Constants;
+import kpk.dev.d3app.util.KPKLog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -57,6 +58,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	}
 
 	private void updateProfile(final List<IProfileModel> profiles, final int i) {
+		KPKLog.d("Loading profile");
 		Bundle bundle = new Bundle();
 		if(profiles == null || profiles.size() < 1){
 			new GetServerStatusTask(SplashScreenActivity.this).start();
@@ -70,10 +72,12 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 			public void dataReady(IProfileModel model, boolean newObject,
 					String[] returnedArgs) {
 				if(i < profiles.size() - 1){
+					
 					runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
-							mProgressBar.setProgress(mProgressBar.getProgress() + D3Constants.PROGRESS_INCREMENT);
+							serverStatusParseProgress();
+							//mProgressBar.setProgress(mProgressBar.getProgress() + D3Constants.PROGRESS_INCREMENT);
 						}
 					});
 					int index = i + 1;
@@ -95,7 +99,6 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	public void startSplashScreenTimer() {
 		Timer mTimer = new Timer();
 		mTimer.schedule(new TimerTask() {
-			
 			@Override
 			public void run() {
 				runOnUiThread(new Runnable() {
@@ -145,7 +148,6 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 		progressbarAnimation.setAnimationListener(new Animation.AnimationListener() {
 			
 			public void onAnimationStart(Animation animation) {
-				
 				mProgressBar.setProgress(D3Constants.PROGRESS_STEPS_MAX * D3Constants.PROGRESS_INCREMENT);
 			}
 			
@@ -167,6 +169,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 
 	@Override
 	public void serverStatusParseProgress() {
+		KPKLog.d("Loading stuff");
 		mProgressBar.setProgress(mProgressBar.getProgress() + D3Constants.PROGRESS_INCREMENT);
 	}
 
@@ -196,6 +199,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	private void startServerAndProfilesUpdate() {
 		long lastUpdateTime = mStartUpComposite.getLastUpdateTime();
 		long updatePeriod = mStartUpComposite.getUpdatePeriod();
+		new GetServerStatusTask(SplashScreenActivity.this).start();
 		if(System.currentTimeMillis() - lastUpdateTime >= updatePeriod){
 			startProfilesUpdate();
 		}

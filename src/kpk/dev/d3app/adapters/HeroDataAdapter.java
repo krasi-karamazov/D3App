@@ -22,6 +22,7 @@ public class HeroDataAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public Fragment getItem(int position) {
 		Fragment fragment = null;
+		if(mHeroModel == null) return new Fragment();
 		if(position == 0){
 			fragment = new BasicHeroDataFragment();
 			((BasicHeroDataFragment)fragment).setData(mHeroModel);
@@ -56,10 +57,10 @@ public class HeroDataAdapter extends FragmentStatePagerAdapter {
 	}
 	
 	private String[] titles = {
-		"Hero summary",
+		"Hero",
 		"Armory",
 		"Skills",
-		"Statistics",
+		"Stats",
 		"Followers"
 	};
 }
