@@ -29,7 +29,16 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int follower_background=0x7f010002;
+        public static final int follower_background=0x7f010003;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int progress_color=0x7f010002;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -474,7 +483,7 @@ containing a value of this type.
            @see #follower_styleable_follower_background
          */
         public static final int[] follower_styleable = {
-            0x7f010002
+            0x7f010003
         };
         /**
           <p>This symbol is the offset where the {@link kpk.dev.d3app.R.attr#follower_background}
@@ -490,5 +499,33 @@ containing a value of this type.
           @attr name android:follower_background
         */
         public static final int follower_styleable_follower_background = 0;
+        /** Attributes that can be used with a progress_styleable.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #progress_styleable_progress_color kpk.dev.d3app:progress_color}</code></td><td></td></tr>
+           </table>
+           @see #progress_styleable_progress_color
+         */
+        public static final int[] progress_styleable = {
+            0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link kpk.dev.d3app.R.attr#progress_color}
+          attribute's value can be found in the {@link #progress_styleable} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:progress_color
+        */
+        public static final int progress_styleable_progress_color = 0;
     };
 }

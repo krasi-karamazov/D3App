@@ -24,6 +24,7 @@ import kpk.dev.d3app.ui.fragments.WarningDialogFragment;
 import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
 import kpk.dev.d3app.util.D3Constants;
 import kpk.dev.d3app.util.KPKLog;
+import kpk.dev.d3app.widgets.DiabloProgressBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,6 +35,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class SplashScreenActivity extends AbstractActivity implements ServerStatusParsedListener, IDialogWatcher  {
 	private ProgressBar mProgressBar;
@@ -72,14 +75,6 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 			public void dataReady(IProfileModel model, boolean newObject,
 					String[] returnedArgs) {
 				if(i < profiles.size() - 1){
-					
-					runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							serverStatusParseProgress();
-							//mProgressBar.setProgress(mProgressBar.getProgress() + D3Constants.PROGRESS_INCREMENT);
-						}
-					});
 					int index = i + 1;
 					updateProfile(profiles, index);
 				}else{
@@ -88,12 +83,6 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 			}
 		}, getDatabase());
 		careerTask.execute(bundle);
-	}
-
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putInt(PROGRESS_KEY, mProgressBar.getProgress());
 	}
 
 	public void startSplashScreenTimer() {
@@ -147,9 +136,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 		final Animation progressbarAnimation = AnimationUtils.loadAnimation(this, R.anim.progress_bar_animation);
 		progressbarAnimation.setAnimationListener(new Animation.AnimationListener() {
 			
-			public void onAnimationStart(Animation animation) {
-				mProgressBar.setProgress(D3Constants.PROGRESS_STEPS_MAX * D3Constants.PROGRESS_INCREMENT);
-			}
+			public void onAnimationStart(Animation animation) {}
 			
 			public void onAnimationRepeat(Animation animation) {}
 			
@@ -170,14 +157,11 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	@Override
 	public void serverStatusParseProgress() {
 		KPKLog.d("Loading stuff");
-		mProgressBar.setProgress(mProgressBar.getProgress() + D3Constants.PROGRESS_INCREMENT);
 	}
 
 	@Override
 	protected void initComponents() {
 		mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
-		mProgressBar.setProgress(0);
-		mProgressBar.setMax(D3Constants.PROGRESS_STEPS_MAX * D3Constants.PROGRESS_INCREMENT);
 		checkConnectivity(mSavedState);
 	}
 	
