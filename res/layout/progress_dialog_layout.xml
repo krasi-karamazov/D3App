@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical" 
     android:padding="15dp"
@@ -8,10 +9,15 @@
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="horizontal">
-        <ProgressBar 
-        	android:id="@+id/progress_bar"
-        	android:layout_width="wrap_content" android:layout_height="wrap_content"
-        	android:indeterminate="true"/>
+        <kpk.dev.d3app.widgets.DiabloProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_centerVertical="true"
+            android:indeterminate="true" style="@android:style/Widget.ProgressBar.Small"
+            android:minWidth="20dp" android:minHeight="20dp"
+            android:background="@drawable/passive_selected"
+            app:progress_color="#ff0000"/>
         <TextView 
             android:layout_width="wrap_content" android:layout_height="match_parent"
             android:gravity="center"

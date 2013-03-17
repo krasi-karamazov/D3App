@@ -1,20 +1,5 @@
 package kpk.dev.d3app.util;
 
-import java.lang.reflect.Method;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import kpk.dev.d3app.R;
-import kpk.dev.d3app.models.accountmodels.D3Item;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -28,6 +13,13 @@ import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import kpk.dev.d3app.R;
+import kpk.dev.d3app.models.accountmodels.D3Item;
+
+import java.lang.reflect.Method;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Utils {
 	private static DecimalFormat twoDForm = new DecimalFormat("#.##");
@@ -88,6 +80,12 @@ public class Utils {
 			}
 		}
 	}
+
+    public static int getPixelsForDisplayScale(Context context, int dps){
+        final float scale = context.getResources().getDisplayMetrics().density;
+        int pixels = (int) (dps * scale + 0.5f);
+        return pixels;
+    }
 	
 	public static int getDrawableForItem(String color) {
 		if (color.equalsIgnoreCase("white")) {
