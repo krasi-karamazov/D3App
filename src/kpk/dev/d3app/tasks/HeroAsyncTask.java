@@ -82,6 +82,7 @@ public class HeroAsyncTask extends BaseJSONAsyncTask {
 				+ "/api/d3/profile/" + battleTag + "/hero/" + hero.getID();
 		try{
 			JsonFactory jsonFactory = new MappingJsonFactory();
+            //KPKLog.d(heroJSONURL);
 			JsonParser jp = jsonFactory.createJsonParser(readJSON(heroJSONURL));
 			HeroModelDecorator decorator = jp.readValueAs(HeroModelDecorator.class);
 			decorator.setHeroModel(hero);

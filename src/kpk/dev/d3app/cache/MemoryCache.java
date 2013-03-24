@@ -2,7 +2,6 @@ package kpk.dev.d3app.cache;
 
 import java.nio.ByteBuffer;
 
-import kpk.dev.d3app.util.KPKLog;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -34,7 +33,6 @@ public class MemoryCache {
 	
 	private int getBitmapBytes(Bitmap value) {
 		int bytes = value.getWidth() * value.getHeight() * 4;
-		KPKLog.d("bytes " + String.valueOf(bytes));
 		ByteBuffer buffer = ByteBuffer.allocate(bytes);
 		value.copyPixelsToBuffer(buffer);
 		byte[] array = buffer.array();

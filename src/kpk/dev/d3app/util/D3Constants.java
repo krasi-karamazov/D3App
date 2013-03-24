@@ -59,6 +59,8 @@ public class D3Constants {
 	public static final String LIFE_KEY = "Life";
 	public static final String DEFENSIVE_KEY = "Defensive";
 	public static final String ADVENTURE_KEY = "Adventure";
+    public static final String SHARED_PREFS_UPDATE_INTERVAL_KEY = "update_interval";
+    public static final String SHARED_PREFS_CACHE_OPTIONS_KEY = "cache_option";
 	
 	public static String ITEM_INFO_URL = ".battle.net/api/d3/data/";
 }

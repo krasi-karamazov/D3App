@@ -37,11 +37,11 @@ public class TooltipActivity extends Activity {
 		setContentView(R.layout.dialog_background);
 		mToolTipUrl = getIntent().getExtras().getString(TOOLTIP_URL_KEY);
 		webView = (WebView)findViewById(R.id.details_view);
-		LayoutParams params = webView.getLayoutParams();
+		/*LayoutParams params = webView.getLayoutParams();
 		Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
 				.getDefaultDisplay();
 		params.height = (int) (0.70 * display.getHeight());
-		webView.setLayoutParams(params); // NOTE: Temporary fix
+		webView.setLayoutParams(params); // NOTE: Temporary fix*/
 		webView.setWebViewClient(new D3ToolTipClient());
 		webView.setBackgroundColor(Color.BLACK);
 		new Thread(getHtmlRunnable).start();
@@ -89,21 +89,22 @@ public class TooltipActivity extends Activity {
 						@Override
 						public void run() {
 							final String html = "<html>"
+                                    + "<meta name='viewport' content='width=device-width, width=device-height, user-scalable=no' />"
 									+ "<link rel=\"stylesheet\" type=\"text/css\" href=\""
 									+ "http://eu.battle.net/d3/static/css/tooltips.css"
 									+ "\" />"
 									+ "<style type=\"text/css\">"
-									+ ".ui-tooltip { background: black; padding: 1px; border: 1px solid #322a20; opacity: 0.95; max-width: 355px;"
-									+ "-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;"
-									+ "-moz-box-shadow: 0 0 10px #000; -webkit-box-shadow: 0 0 10px #000; box-shadow: 0 0 10px #000;"
-									+ "width: 355px;}"
+									//+ ".ui-tooltip { background: black; padding: 1px; border: 1px solid #322a20; opacity: 0.95; max-width: 355px;"
+									//+ "-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;"
+									//+ "-moz-box-shadow: 0 0 10px #000; -webkit-box-shadow: 0 0 10px #000; box-shadow: 0 0 10px #000;"
+									//+ "width: 355px;}"
 									+ ".ui-tooltip .tooltip-content { background: black; padding: 10px; color: #CFB991; font-size: 12px; }"
 									+ ".ui-tooltip-d3 .tooltip-content { padding: 0; }"
 									+ ".ui-tooltip .subheader { font-size: 18px; color: #F3E6D0; font-weight: normal; margin-bottom: 4px; } "
 									+ "</style>" + "<body><div class=\"ui-tooltip\">" + strbString.toString()
 									+ "</div></body></html>";
 							webView.loadDataWithBaseURL(null, html, "text/html", "utf-8", null);
-							webView.setInitialScale(getInitialScale());
+							//webView.setInitialScale(getInitialScale());
 						}
 					});
 				}

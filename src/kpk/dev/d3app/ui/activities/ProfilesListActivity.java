@@ -22,7 +22,6 @@ import kpk.dev.d3app.ui.fragments.ProfileOptionsDialog;
 import kpk.dev.d3app.ui.fragments.ProfileOptionsDialog.ProfileOptions;
 import kpk.dev.d3app.ui.fragments.ProgressDialogFragment;
 import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
-import kpk.dev.d3app.util.KPKLog;
 import kpk.dev.d3app.util.Utils;
 import android.content.Context;
 import android.content.Intent;
@@ -184,7 +183,7 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 		@Override
 		public void dataReady(IProfileModel model, final boolean newObject, String[] returnedArgs) {
 			final ProfileModel profile = (ProfileModel)model;
-			KPKLog.d("before " + mProfiles.size());
+			//KPKLog.d("before " + mProfiles.size());
 			if(profile != null){
 				if(newObject){
 					mProfiles.add(profile);
@@ -196,7 +195,7 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 					deleteProfile(returnedArgs);
 				}
 				
-				KPKLog.d("Removed " + mProfiles.size());
+				//KPKLog.d("Removed " + mProfiles.size());
 			}
 			mHandler.post(new Runnable() {
 				@Override

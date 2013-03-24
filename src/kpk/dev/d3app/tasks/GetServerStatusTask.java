@@ -28,13 +28,14 @@ public class GetServerStatusTask extends Thread {
 	
 	@Override
 	public void run() {
-		mListener.serverStatusParseProgress();
 		MicrosoftConditionalCommentTagTypes.register();
 		MasonTagTypes.register();
 		URL serversURL = null;
 		try{
 			serversURL = new URL(D3Constants.SERVERS_PAGE_URL);
-		}catch(MalformedURLException e){}
+		}catch(MalformedURLException e){
+            mListener.serverStatusParsed(null);
+        }
 		if(serversURL == null) {
 			
 			mListener.serverStatusParsed(null);
@@ -48,14 +49,12 @@ public class GetServerStatusTask extends Thread {
 			while((c = is.read()) != -1) {
 				stringBuilder.append((char)c);	
 			}
-			mListener.serverStatusParseProgress();
 			Source source = new Source(stringBuilder.toString());
 			getTags(source.getAllElementsByClass("box"));
 			mListener.serverStatusParsed(mRegions);
 		}catch(IOException e){
 			e.printStackTrace();
 			mListener.serverStatusParsed(null);
-			return;
 		}
 		
 	}
@@ -78,7 +77,6 @@ public class GetServerStatusTask extends Thread {
 			}
 			region.setServers(servers);
 			mRegions.add(region);
-			mListener.serverStatusParseProgress();
 		}
 	}
 }

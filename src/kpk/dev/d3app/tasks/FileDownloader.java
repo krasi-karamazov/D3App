@@ -11,7 +11,6 @@ import java.net.URLConnection;
 import android.content.Context;
 import kpk.dev.d3app.cache.MemoryCache;
 import kpk.dev.d3app.listeners.FileDownloadListener;
-import kpk.dev.d3app.util.KPKLog;
 
 public class FileDownloader {
 	private Thread downloaderThread;
@@ -26,7 +25,7 @@ public class FileDownloader {
 			@Override
 			public void run() {
 				if(filePath.exists()) {
-					KPKLog.d("File exists. Decoding and returning");
+					//KPKLog.d("File exists. Decoding and returning");
 					new BitmapDecodeTask(density, mMemoryChache, listener).execute(filePath);
 					return;
 				}
@@ -34,7 +33,7 @@ public class FileDownloader {
 				if(!parentDir.exists()){
 					parentDir.mkdirs();
 				}
-				KPKLog.d("File doesn't exist. Downloading...");
+				//KPKLog.d("File doesn't exist. Downloading...");
 				URL url;
 				DataInputStream dataStream;
 				URLConnection urlConnection;

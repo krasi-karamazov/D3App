@@ -19,7 +19,6 @@ import kpk.dev.d3app.models.accountmodels.ProfileModel;
 import kpk.dev.d3app.models.accountmodels.ProgressionModel;
 import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
 import kpk.dev.d3app.util.D3Constants;
-import kpk.dev.d3app.util.KPKLog;
 import kpk.dev.d3app.util.Utils;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -39,11 +38,11 @@ public class ProfilesDatabaseProcessor extends DatabaseProcessorBase {
 			for(IProfileModel item : items) {
 				ProfileModel model = (ProfileModel)item;
 				if(profileExists(model, database)){
-					KPKLog.d("UPDATE INITIAL DATA");
+					//KPKLog.d("UPDATE INITIAL DATA");
 					deleteProfile(database, model.getBattleTag(), model.getServer());
 					result = false;
 				}else{
-					KPKLog.d("INSERT INITIAL DATA");
+					//KPKLog.d("INSERT INITIAL DATA");
 					mProfiles.add(model);
 					result = true;
 				}

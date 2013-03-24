@@ -1,7 +1,6 @@
 package kpk.dev.d3app.services;
 
 import kpk.dev.d3app.database.D3AppSQLitehelper;
-import kpk.dev.d3app.util.KPKLog;
 import android.app.Service;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -49,9 +48,9 @@ public class DatabaseService extends Service {
 		if(!mDatabase.inTransaction()){
 			mDatabase.close();
 		}
-		KPKLog.d("DESTROY SERVICE");
+		//KPKLog.d("DESTROY SERVICE");
 		mBinder.clearService();
-		KPKLog.d("DATABSE CLOSED: " + mDatabase.isOpen());
+		//KPKLog.d("DATABSE CLOSED: " + mDatabase.isOpen());
 		mBinder = null;
 	}
 

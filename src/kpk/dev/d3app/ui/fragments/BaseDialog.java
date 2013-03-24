@@ -42,4 +42,6 @@ public abstract class BaseDialog extends DialogFragment {
 		super.onCreate(savedInstanceState);
 		setStyle(STYLE_NO_TITLE, android.R.style.Theme_Dialog);
 	}
+
+
 }

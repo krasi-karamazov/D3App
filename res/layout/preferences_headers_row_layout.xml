@@ -5,14 +5,14 @@
     <TextView 
         android:id="@+id/preference_header_title"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
-        android:layout_centerVertical="true" android:gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:layout_toLeftOf="@id/add_profile_button" android:layout_alignParentLeft="true"
         android:textSize="20sp"/>
     
     <TextView 
         android:id="@+id/preference_header_description"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
-        android:layout_centerVertical="true" android:gravity="center_horizontal"
+        android:layout_below="@id/preference_header_title" android:gravity="center_horizontal"
         android:layout_toLeftOf="@id/add_profile_button" android:layout_alignParentLeft="true"
-        android:textSize="20sp"/>
+        android:textSize="14sp"/>
 </RelativeLayout>

@@ -23,7 +23,6 @@ import kpk.dev.d3app.listeners.BaseDataListener;
 import kpk.dev.d3app.models.accountmodels.HeroModelDecorator;
 import kpk.dev.d3app.models.accountmodels.ProfileModel;
 import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
-import kpk.dev.d3app.util.KPKLog;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;

@@ -1,6 +1,7 @@
 package kpk.dev.d3app.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PreferencesObject {
 	private String mTitle;

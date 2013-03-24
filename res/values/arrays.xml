@@ -7,7 +7,12 @@
     
     <string-array name="settings_headers_array">
         <item>Update interval</item>
-        <item>Image cache options</item>
+        <item>Image cache</item>
+    </string-array>
+
+    <string-array name="settings_descriptions_array">
+        <item>How often to update data</item>
+        <item>How to handle old cached images</item>
     </string-array>
     
     <string-array name="update_interval_array">

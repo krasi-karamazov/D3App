@@ -2,7 +2,6 @@ package kpk.dev.d3app.widgets;
 
 
 import kpk.dev.d3app.R;
-import kpk.dev.d3app.util.KPKLog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -66,7 +65,7 @@ public class TimePlayedWidget extends ImageView {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		if(mPaint == null) return;
-		KPKLog.d("PROGRESS " + mProgress);
+		//KPKLog.d("PROGRESS " + mProgress);
 		canvas.drawRect(0, getMeasuredHeight() - (int)(getMeasuredHeight()  * mProgress), getMeasuredWidth(), getMeasuredHeight(), mPaint);
 	}
 }

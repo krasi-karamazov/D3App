@@ -154,6 +154,19 @@ public class D3AppSQLitehelper extends SQLiteOpenHelper {
 		      + D3Item.ITEM_TOOLTIP_PARAMS_COLUMN + " text not null, "
 		      + D3Item.ITEM_GEMS_COLUMN + " text"
 		      + ");";
+
+    private static final String HERO_FULL_ITEMS_TABLE = "create table "
+            + D3Item.TABLE_NAME + "(" + IProfileModel.ID_COLUMN
+            + " integer primary key autoincrement, "
+            + HeroModel.HERO_ID_COLUMN + " integer, "
+            + D3Item.TYPE_COLUMN + " text not null, "
+            + D3Item.ITEM_ID_COLUMN + " text not null, "
+            + D3Item.ITEM_NAME_COLUMN + " text not null, "
+            + D3Item.ITEM_ICON_COLUMN + " text not null, "
+            + D3Item.ITEM_DISPLAY_COLOR_COLUMN + " text not null, "
+            + D3Item.ITEM_TOOLTIP_PARAMS_COLUMN + " text not null, "
+            + D3Item.ITEM_GEMS_COLUMN + " text"
+            + ");";
 	
 	private static final String HERO_STATS_TABLE = "create table "
 		      + HeroModelDecorator.HERO_STATS_TABLE_NAME + "(" 

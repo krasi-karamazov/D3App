@@ -163,7 +163,10 @@ public class Utils {
 		options.inSampleSize = calculateSampleSize(options, imageWidth, imageHeight);
 		options.inJustDecodeBounds = false;
 		Bitmap bmp = BitmapFactory.decodeFile(pathName, options);
-		bmp.setDensity(density);
+        if(bmp != null){
+            bmp.setDensity(density);
+        }
+
 		return bmp;
 	}
 
