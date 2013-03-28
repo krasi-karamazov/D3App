@@ -172,13 +172,11 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 
 	private synchronized IProfileModel getHeroData(long heroID, SQLiteDatabase database) {
 		HeroModelDecorator heroDecorator = null;
-		String queryString = "select * from " + HeroModel.TABLE_NAME 
-				+ " join " + HeroModelDecorator.HERO_STATS_TABLE_NAME 
-				+ " join " + HeroModelDecorator.HERO_KILLS_TABLE_NAME
-				+ " where " 
-				+ HeroModel.TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + "=" + heroID + 
-				" AND " + HeroModelDecorator.HERO_STATS_TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + "=" + heroID +  
-				" AND " + HeroModelDecorator.HERO_KILLS_TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + "=" + heroID;
+				
+		String queryString = "select * from " + HeroModel.TABLE_NAME + " inner join "
+		+ HeroModelDecorator.HERO_STATS_TABLE_NAME + " inner join " + HeroModelDecorator.HERO_KILLS_TABLE_NAME 
+		+ " on " + HeroModel.TABLE_NAME + "." + HeroModelDecorator.HERO_ID_COLUMN + " where " 
+		+ HeroModel.TABLE_NAME + "." + HeroModelDecorator.HERO_ID_COLUMN + " = " + heroID;
 		
 		Cursor cursor = database.rawQuery(queryString, null);
 		
