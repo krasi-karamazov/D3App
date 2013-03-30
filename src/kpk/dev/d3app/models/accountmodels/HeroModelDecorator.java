@@ -87,7 +87,7 @@ public class HeroModelDecorator implements IProfileModel {
 	@JsonSetter("progress")
 	public void setHeroProgress(HeroProgressionModel progress) {
 		mProgress = progress;
-		System.out.println(mProgress.getHell().getActsCompletion());
+		//System.out.println(mProgress.getHell().getActsCompletion());
 	}
 	
 	@JsonGetter("progress")

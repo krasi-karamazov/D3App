@@ -51,11 +51,11 @@ public class HeroDetailsActivity extends AbstractActivity implements IDialogWatc
 			if(models != null && models.size() > 0 && models.get(0) != null) {
 				displayData((HeroModelDecorator)models.get(0));
 			}else{
-//				Bundle params = new Bundle();
-//				params.putLong(BaseJSONAsyncTask.HERO_ID_BUNDLE_KEY, mHeroID);
-//				params.putString(BaseJSONAsyncTask.REGION_BUNDLE_KEY, mServer);
-//				params.putString(BaseJSONAsyncTask.BATTLE_TAG_BUNDLE_KEY, mProfileTag);
-//				BaseJSONAsyncTask.getTask(TaskType.HERO, this, getDatabase()).execute(params);
+				Bundle params = new Bundle();
+				params.putLong(BaseJSONAsyncTask.HERO_ID_BUNDLE_KEY, mHeroID);
+				params.putString(BaseJSONAsyncTask.REGION_BUNDLE_KEY, mServer);
+				params.putString(BaseJSONAsyncTask.BATTLE_TAG_BUNDLE_KEY, mProfileTag);
+				BaseJSONAsyncTask.getTask(TaskType.HERO, this, getDatabase()).execute(params);
 			}
 		}
 

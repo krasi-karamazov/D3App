@@ -7,6 +7,7 @@ import kpk.dev.d3app.database.HeroDatabaseProcessor;
 import kpk.dev.d3app.database.HeroDatabaseProcessor.HeroDataType;
 import kpk.dev.d3app.listeners.DataReadyListener;
 import kpk.dev.d3app.models.accountmodels.interfaces.IProfileModel;
+import kpk.dev.d3app.util.KPKLog;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -34,7 +35,7 @@ public class GetHeroDataTask extends AsyncTask<Bundle, String, List<IProfileMode
 	@Override
 	protected List<IProfileModel> doInBackground(Bundle... params) {
 		Bundle bundle = params[0];
-		
+		KPKLog.d("is open " + mDatabase.isOpen());
 		if(bundle.containsKey(HERO_ID_BUNDLE_KEY)){
 			final List<IProfileModel> profileModels = new ArrayList<IProfileModel>();
 			profileModels.add(mDatabaseProcessor.getHeroData(mDataType, params[0].getLong(HERO_ID_BUNDLE_KEY), 
