@@ -105,7 +105,7 @@ public class SingleChoiceListDialog extends DialogFragment {
 
     private void populateList() {
         final ArrayList<String> opts = getArguments().getStringArrayList(OPTIONS_ARRAY_KEY);
-        final int selected = getArguments().getInt(SELECTED_OPTION_KEY);
+        final int selected = getArguments().getInt(SELECTED_OPTION_KEY, 3);
         mItemsList = new ArrayList<SingleChoiceItemObject>();
         for(int i = 0; i < opts.size(); i++) {
             SingleChoiceItemObject obj = new SingleChoiceItemObject();

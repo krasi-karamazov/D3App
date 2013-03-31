@@ -19,6 +19,7 @@ import kpk.dev.d3app.ui.fragments.BaseDialog;
 import kpk.dev.d3app.ui.fragments.BaseDialog.DialogType;
 import kpk.dev.d3app.ui.fragments.AddProfileDialogFragment;
 import kpk.dev.d3app.ui.fragments.ProfileOptionsDialog;
+import kpk.dev.d3app.ui.fragments.WarningDialogFragment;
 import kpk.dev.d3app.ui.fragments.ProfileOptionsDialog.ProfileOptions;
 import kpk.dev.d3app.ui.fragments.ProgressDialogFragment;
 import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
@@ -45,7 +46,7 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 	public static final String SELECTED_PROFILE_SERVER = "selected_profile_server";
 	public static final String SELECTED_PROFILE_BATTLE_TAG = "selected_profile_battleTag";
 	private Handler mHandler;
-	
+	private static final String WARNING_DIALOG_TAG = "warning_dialog";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -155,7 +156,24 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 		}
 	}
 	
+	private void showProblemDialog(int strId) {
+		final Bundle dialogData = new Bundle();
+		dialogData.putString(BaseDialog.TITLE_KEY, getString(R.string.connectivity_alert_dialog_title));
+		dialogData.putString(WarningDialogFragment.MESSAGE_KEY, getString(strId));
+		dialogData.putInt(BaseDialog.DIALOG_LAYOUT_KEY, R.layout.warning_dialog_background);
+		DialogFragment warningDialogFragment = WarningDialogFragment.getInstance(dialogData);
+		((BaseDialog)warningDialogFragment).setDialogWatcher(this);
+		warningDialogFragment.show(getSupportFragmentManager(), WARNING_DIALOG_TAG);
+	}
+	
 	private void constructAndExecuteQuery(QueryTypes queryType, String region, String battleTag) {
+		if(!battleTag.contains("#")) {
+			showProblemDialog(R.string.battletag_error);
+			return;
+		}else if(!Utils.isConnectedToInternet(getApplicationContext())){
+			showProblemDialog(R.string.data_download_error);
+			return;
+		}
 		showProgressDialog();
 		final Bundle bundle = new Bundle();
 		bundle.putString(CareerAsyncTask.REGION_BUNDLE_KEY, region);
@@ -191,11 +209,10 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 					replaceProfile(profile);
 				}
 			}else{
+				showProblemDialog(R.string.data_download_error);
 				if(returnedArgs != null) {
 					deleteProfile(returnedArgs);
 				}
-				
-				//KPKLog.d("Removed " + mProfiles.size());
 			}
 			mHandler.post(new Runnable() {
 				@Override

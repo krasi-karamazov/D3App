@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">D3App</string>
+    <string name="app_name">Diablo 3 Heroes Inn</string>
     <string name="menu_settings">Settings</string>
 	<string name="ok_button">OK</string>
 	<string name="cancel_button">CANCEL</string>
@@ -16,6 +16,7 @@
 	<string name="connectivity_alert_dialog_title">Error</string>
 	<string name="connectivity_alert_dialog_message">Cannot establish connection with battle.net servers. The app will now close.</string>
 	<string name="data_download_error">The data cannot be downloaded at this time, please check if the server is down (from the home screen).</string>
+	<string name="battletag_error">The battletag you entered is invalid.</string>
 	<string name="battletag_hint">BattleTag(E.g. Straton#1)</string>
 	<string name="us_server_label">US</string>
 	<string name="eu_server_label">EU</string>

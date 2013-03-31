@@ -21,7 +21,7 @@ public class D3Constants {
 	public static final String[] mModes = {"normal", "nightmare", "hell", "inferno"};
 	public static String[] FOLLOWERS_KEYS_ARRAY = {"templar", "scoundrel", "enchantress"};
 	public static int[] FOLLOWER_VIEWS_IDS = {R.id.templar_view, R.id.scoundrel_view, R.id.enchantress_view};
-	private static String APP_FOLDER = ".THEd3app";
+	private static String APP_FOLDER = ".d3heroesinn";
 	public static final String BLACKSMITH_PORTRAIT_URL = "http://media.blizzard.com/d3/icons/portraits/64/blacksmith.png";
 	public static final String JEWELER_PORTRAIT_URL = "http://media.blizzard.com/d3/icons/portraits/64/jeweler.png";
 	public static final String LARGE_ITEM_ICON_URL = "http://media.blizzard.com/d3/icons/items/large/";
