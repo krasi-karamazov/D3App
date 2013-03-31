@@ -167,12 +167,14 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 	}
 	
 	private void constructAndExecuteQuery(QueryTypes queryType, String region, String battleTag) {
-		if(!battleTag.contains("#")) {
-			showProblemDialog(R.string.battletag_error);
-			return;
-		}else if(!Utils.isConnectedToInternet(getApplicationContext())){
-			showProblemDialog(R.string.data_download_error);
-			return;
+		if(queryType.equals(QueryTypes.loadData)){
+			if(!battleTag.contains("#")) {
+				showProblemDialog(R.string.battletag_error);
+				return;
+			}else if(!Utils.isConnectedToInternet(getApplicationContext())){
+				showProblemDialog(R.string.data_download_error);
+				return;
+			}
 		}
 		showProgressDialog();
 		final Bundle bundle = new Bundle();
@@ -209,9 +211,11 @@ public class ProfilesListActivity extends AbstractActivity implements IDialogWat
 					replaceProfile(profile);
 				}
 			}else{
-				showProblemDialog(R.string.data_download_error);
+				
 				if(returnedArgs != null) {
 					deleteProfile(returnedArgs);
+				}else{
+					showProblemDialog(R.string.data_download_error);
 				}
 			}
 			mHandler.post(new Runnable() {
