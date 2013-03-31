@@ -18,6 +18,7 @@ import kpk.dev.d3app.ui.fragments.BaseDialog.DialogType;
 import kpk.dev.d3app.ui.fragments.ProgressDialogFragment;
 import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
 
+import kpk.dev.d3app.util.KPKLog;
 import kpk.dev.d3app.util.Utils;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -48,14 +49,21 @@ public class HeroDetailsActivity extends AbstractActivity implements IDialogWatc
 	private DataReadyListener mDataReadFromDBListener = new DataReadyListener() {
 		@Override
 		public void dataReadyListener(List<IProfileModel> models) {
-			if(models != null && models.size() > 0 && models.get(0) != null) {
+			if(models.get(0) != null) {
 				displayData((HeroModelDecorator)models.get(0));
 			}else{
 				Bundle params = new Bundle();
 				params.putLong(BaseJSONAsyncTask.HERO_ID_BUNDLE_KEY, mHeroID);
 				params.putString(BaseJSONAsyncTask.REGION_BUNDLE_KEY, mServer);
 				params.putString(BaseJSONAsyncTask.BATTLE_TAG_BUNDLE_KEY, mProfileTag);
-				BaseJSONAsyncTask.getTask(TaskType.HERO, this, getDatabase()).execute(params);
+				if(Utils.isConnectedToInternet(getApplicationContext())) {
+					BaseJSONAsyncTask.getTask(TaskType.HERO, this, getDatabase()).execute(params);
+				}else{
+					dismissProgressDialog();
+					
+					showProblemDialog();
+				}
+				
 			}
 		}
 
@@ -103,6 +111,7 @@ public class HeroDetailsActivity extends AbstractActivity implements IDialogWatc
 		showProgressDialog();
 		Bundle params = new Bundle();
 		params.putLong(GetHeroDataTask.HERO_ID_BUNDLE_KEY, mHeroID);
+		KPKLog.d("mHeroId " + mHeroID);
 		new GetHeroDataTask(mDataReadFromDBListener, getDatabase(), HeroDataType.BasicHeroData).execute(params);
 	}
 	

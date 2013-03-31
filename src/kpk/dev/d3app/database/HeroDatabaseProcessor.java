@@ -164,26 +164,38 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 	}
 
 	public synchronized IProfileModel getHeroData(HeroDataType dataType, long heroID, String followerSlug, SQLiteDatabase database) {
+		IProfileModel model = null;
 		if(dataType == HeroDataType.BasicHeroData){
-			return getHeroData(heroID, database);
+			try{
+				model = getHeroData(heroID, database);
+			}catch(NullPointerException e){
+				return null;
+			}
 		}		
-		return null;
+		return model;
 	}
 
-	private IProfileModel getHeroData(long heroID, SQLiteDatabase database) {
+	private IProfileModel getHeroData(long heroID, SQLiteDatabase database) throws NullPointerException {
 		HeroModelDecorator heroDecorator = null;
-		String queryString = "select * from D3HeroSummaryTable left join hero_kills on D3HeroSummaryTable.hero_id = hero_kills.hero_id left join hero_stats on D3HeroSummaryTable.hero_id = hero_stats.hero_id where D3HeroSummaryTable.hero_id = '" + heroID + "'";
-
-		String[] selectionArgs = {Long.valueOf(heroID).toString()};
-		String selection = "hero_id";
+		//String queryString = "select * from D3HeroSummaryTable left join hero_kills on D3HeroSummaryTable.hero_id = hero_kills.hero_id left join hero_stats on D3HeroSummaryTable.hero_id = hero_stats.hero_id where D3HeroSummaryTable.hero_id = '" + heroID + "'";
+		String queryString = "select * from " + HeroModel.TABLE_NAME + " left join "
+				+ HeroModelDecorator.HERO_KILLS_TABLE_NAME + " on "
+				+ HeroModel.TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + "=" + HeroModelDecorator.HERO_KILLS_TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN
+				+ " left join " + HeroModelDecorator.HERO_STATS_TABLE_NAME + " on " + HeroModel.TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + "="
+				+ HeroModelDecorator.HERO_STATS_TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + " where " + HeroModel.TABLE_NAME + "." + HeroModel.HERO_ID_COLUMN + "='" + heroID + "'";
 		
 		Cursor cursor = database.rawQuery(queryString, null);
 		
 		
 		if(cursor.moveToFirst()) {
 			heroDecorator = new HeroModelDecorator(buildBasiHeroModel(cursor));
-			heroDecorator.setStats(getHeroStats(cursor));
-			heroDecorator.setKills(getHeroKills(cursor));
+			try{
+				heroDecorator.setStats(getHeroStats(cursor));
+				heroDecorator.setKills(getHeroKills(cursor));
+			}catch (NullPointerException e) {
+				throw e;
+			}
+			
 		}
 		cursor.close();
 		if(heroDecorator == null) {
@@ -398,11 +410,15 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		return getHeroProgression(progressionCursor);
 	}
 
-	private Map<String, Number> getHeroKills(Cursor cursor) {
-		return buildMap(cursor, MapDataType.Kills);
+	private Map<String, Number> getHeroKills(Cursor cursor) throws NullPointerException {
+		try {
+			return buildMap(cursor, MapDataType.Kills);
+		}catch (NullPointerException e){
+			throw e;
+		}
 	}
 	
-	private synchronized Map<String, Number> buildMap(Cursor cursor, MapDataType type){
+	private synchronized Map<String, Number> buildMap(Cursor cursor, MapDataType type) throws NullPointerException{
 		final Map<String, Number> map = new LinkedHashMap<String, Number>();
 		int keysColumnIndex = -1;
 		int valuesColumnIndex = -1;
@@ -420,6 +436,9 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		
 		heroKeysString = cursor.getString(keysColumnIndex);
 		heroValuesString = cursor.getString(valuesColumnIndex);
+		if(heroKeysString == null || heroValuesString == null) {
+			throw new NullPointerException();
+		}
 		keysArray = heroKeysString.split(",");
 		valuesArray = heroValuesString.split(",");
 		
@@ -435,8 +454,12 @@ public class HeroDatabaseProcessor extends DatabaseProcessorBase {
 		return map;
 	}
 
-	private Map<String, Number> getHeroStats(Cursor cursor) {
-		return buildMap(cursor, MapDataType.Stats);
+	private Map<String, Number> getHeroStats(Cursor cursor) throws NullPointerException {
+		try {
+			return buildMap(cursor, MapDataType.Stats);
+		}catch (NullPointerException e){
+			throw e;
+		}
 	}
 
 	private HeroModel buildBasiHeroModel(Cursor cursor) {

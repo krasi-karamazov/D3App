@@ -24,6 +24,7 @@ public class DiabloPreferenceActivity extends FragmentActivity {
 		super.onCreate(bundle);
 		setContentView(R.layout.preferences_layout);
 		setUpListView();
+		overridePendingTransition(R.anim.activity_anim_exit, R.anim.activity_anim_enter);
 	}
 
 	private void setUpListView() {
@@ -54,7 +55,7 @@ public class DiabloPreferenceActivity extends FragmentActivity {
     private int getSelectedOptionFromPrefs(String title) {
         SharedPreferences prefs = getSharedPreferences(D3Constants.SHARED_PREFERENCES_FILE, MODE_APPEND);
         String key = (title.equalsIgnoreCase("update interval"))? D3Constants.SHARED_PREFS_UPDATE_INTERVAL_KEY : D3Constants.SHARED_PREFS_CACHE_OPTIONS_KEY;
-        return prefs.getInt(key, 0);
+        return prefs.getInt(key, 3);
     }
 
 	private List<PreferencesObject> getOptionsList() {

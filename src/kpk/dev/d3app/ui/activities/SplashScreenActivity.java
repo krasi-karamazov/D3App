@@ -26,6 +26,8 @@ import kpk.dev.d3app.ui.fragments.BaseDialog.DialogType;
 import kpk.dev.d3app.ui.fragments.WarningDialogFragment;
 import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
 import kpk.dev.d3app.util.D3Constants;
+import kpk.dev.d3app.util.KPKLog;
+import kpk.dev.d3app.util.Utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +38,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
-import kpk.dev.d3app.util.KPKLog;
 
 public class SplashScreenActivity extends AbstractActivity implements ServerStatusParsedListener, IDialogWatcher, ICleanUpCompletedListener {
 	private ProgressBar mProgressBar;
@@ -45,6 +46,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	private int mProgress;
 	private Bundle mSavedState;
     private Handler mHandler;
+    private boolean mUpdateProfiles;
 	private StartUpComposite mStartUpComposite;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	}
 
 	private void updateProfile(final List<IProfileModel> profiles, final int i) {
-		//KPKLog.d("Loading profile");
+		KPKLog.d("Loading profile " + i);
 		Bundle bundle = new Bundle();
 		if(profiles == null || profiles.size() < 1){
 			new GetServerStatusTask(SplashScreenActivity.this).start();
@@ -80,6 +82,10 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 					int index = i + 1;
 					updateProfile(profiles, index);
 				}else{
+					SharedPreferences prefs = getSharedPreferences(D3Constants.SHARED_PREFERENCES_FILE, Context.MODE_APPEND);
+					final Editor editor = prefs.edit();
+					editor.putLong(D3Constants.LAST_UPDATE_TIME_KEY, System.currentTimeMillis());
+					editor.commit();
 					new GetServerStatusTask(SplashScreenActivity.this).start();
 				}
 			}
@@ -116,6 +122,7 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 
 	@Override
 	public void serverStatusParsed(List<Region> regions) {
+		KPKLog.d("Parsed server status");
 		final SharedPreferences prefs = getSharedPreferences(D3Constants.SHARED_PREFERENCES_FILE, Context.MODE_PRIVATE);
 		RegionsDatabaseProcessor<BaseBattleNetModel> dbProcessor = new RegionsDatabaseProcessor<BaseBattleNetModel>();
 		if(!prefs.getBoolean(D3Constants.FIRST_LOGIN_COMPLETE_KEY, false)){
@@ -125,18 +132,16 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 			editor.commit();
             performCleanup();
 		}else{
-			try{
-				dbProcessor.updateData(regions, getDatabase());
-                performCleanup();
-			}catch(IllegalStateException e) {
-				
-			}
+			dbProcessor.updateData(regions, getDatabase());
+            performCleanup();
 		}
 	}
 
     private void performCleanup() {
+    	KPKLog.d("Cleaning...");
         final int cleanUpTimeIndex = getSharedPreferences(D3Constants.SHARED_PREFERENCES_FILE, MODE_APPEND).getInt(D3Constants.SHARED_PREFS_CACHE_OPTIONS_KEY, 3);
-        if(cleanUpTimeIndex != -1){
+        if(cleanUpTimeIndex != 3){
+        	KPKLog.d("Starting cleanup...");
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -144,6 +149,8 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
                     new CleanupTask(SplashScreenActivity.this).execute(time);
                 }
             });
+        }else {
+        	startTransition();
         }
     }
 	
@@ -170,11 +177,6 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	}
 
 	@Override
-	public void serverStatusParseProgress() {
-		//KPKLog.d("Loading stuff");
-	}
-
-	@Override
 	protected void initComponents() {
 		mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
 		checkConnectivity(mSavedState);
@@ -198,9 +200,17 @@ public class SplashScreenActivity extends AbstractActivity implements ServerStat
 	private void startServerAndProfilesUpdate() {
 		long lastUpdateTime = mStartUpComposite.getLastUpdateTime();
 		long updatePeriod = mStartUpComposite.getUpdatePeriod();
-		new GetServerStatusTask(SplashScreenActivity.this).start();
-		if(System.currentTimeMillis() - lastUpdateTime >= updatePeriod){
+		KPKLog.d("Update Period " + updatePeriod);
+		if(System.currentTimeMillis() - lastUpdateTime >= updatePeriod && updatePeriod != -1){
+			KPKLog.d("Time to update");
 			startProfilesUpdate();
+		}else{
+			if(Utils.isConnectedToInternet(getApplicationContext())){
+				new GetServerStatusTask(SplashScreenActivity.this).start();
+			}else{
+				startSplashScreenTimer();
+				
+			}
 		}
 	}
 

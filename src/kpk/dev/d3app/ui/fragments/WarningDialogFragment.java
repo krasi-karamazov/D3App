@@ -26,7 +26,7 @@ public class WarningDialogFragment extends BaseDialog {
 		final TextView titleView = (TextView)rootView.findViewById(R.id.dialog_title);
 		titleView.setTypeface(Utils.getFont(getActivity()));
 		final TextView messageView = (TextView)rootView.findViewById(R.id.dialog_message);
-		messageView.setTypeface(Utils.getFont(getActivity()));
+		//messageView.setTypeface(Utils.getFont(getActivity()));
 		final Button okButton = (Button)rootView.findViewById(R.id.ok_button);
 		okButton.setTypeface(Utils.getFont(getActivity()));
 		titleView.setText(getArguments().getString(TITLE_KEY));

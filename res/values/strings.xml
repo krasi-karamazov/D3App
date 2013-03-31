@@ -39,4 +39,9 @@
 	<string name="wd_label">Witch Doctor</string>
 	<string name="update_interval_title">Update interval</string>
 	<string name="images_cleanup_title">Images cleanup</string>
+	<string name="about_text">Designed and developed by Hokori software.\n
+For feature requests and problems please write to hokori.software@gmail.com\n\n
+Diablo® III and Blizzard Entertainment® are all trademarks or registered trademarks of Blizzard Entertainment in the United States and/or other countries.
+These terms and all related materials, logos, and images are copyright © Blizzard Entertainment. This app is in no way associated with or endorsed by Blizzard Entertainment®.
+	    </string>
 </resources>

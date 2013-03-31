@@ -27,12 +27,13 @@
         </activity>
         <activity android:name=".ui.activities.TooltipActivity" android:theme="@android:style/Theme.Dialog"></activity>
         <service android:name=".services.DatabaseService"></service>
-        <activity android:name="kpk.dev.d3app.ui.activities.HomeScreenActivity"></activity>
-        <activity android:name=".ui.activities.ServersViewerActivity"></activity>
-        <activity android:name="kpk.dev.d3app.ui.activities.ProfilesListActivity"></activity>
-        <activity android:name=".ui.activities.ProfileDetailsActivity"></activity>
-        <activity android:name=".ui.activities.HeroDetailsActivity"></activity>
-        <activity android:name=".ui.activities.DiabloPreferenceActivity"></activity>
+        <activity android:name="kpk.dev.d3app.ui.activities.HomeScreenActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.activities.ServersViewerActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="kpk.dev.d3app.ui.activities.ProfilesListActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.activities.ProfileDetailsActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.activities.HeroDetailsActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.activities.DiabloPreferenceActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.activities.AboutActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import kpk.dev.d3app.R;
+import kpk.dev.d3app.ui.fragments.BaseDialog;
+import kpk.dev.d3app.ui.fragments.BaseDialog.DialogType;
+import kpk.dev.d3app.ui.fragments.WarningDialogFragment;
+import kpk.dev.d3app.ui.interfaces.IDialogWatcher;
+import kpk.dev.d3app.util.Utils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,6 +21,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.Display;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -23,11 +30,12 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class TooltipActivity extends Activity {
+public class TooltipActivity extends FragmentActivity implements IDialogWatcher {
 	private WebView webView;
 	private String mToolTipUrl;
 	private StringBuilder strBuilder = new StringBuilder();
 	public static final String TOOLTIP_URL_KEY = "tooltip_url_key";
+	private static final String WARNING_DIALOG_TAG = "warning_dialog";
 	
 	@SuppressWarnings("deprecation")
 	@Override
@@ -44,8 +52,21 @@ public class TooltipActivity extends Activity {
 		webView.setLayoutParams(params); // NOTE: Temporary fix*/
 		webView.setWebViewClient(new D3ToolTipClient());
 		webView.setBackgroundColor(Color.BLACK);
-		new Thread(getHtmlRunnable).start();
-		
+		if(Utils.isConnectedToInternet(getApplicationContext())) {
+			new Thread(getHtmlRunnable).start();
+		}else{
+			showProblemDialog();
+		}
+	}
+	
+	private void showProblemDialog() {
+		final Bundle dialogData = new Bundle();
+		dialogData.putString(BaseDialog.TITLE_KEY, getString(R.string.connectivity_alert_dialog_title));
+		dialogData.putString(WarningDialogFragment.MESSAGE_KEY, getString(R.string.data_download_error));
+		dialogData.putInt(BaseDialog.DIALOG_LAYOUT_KEY, R.layout.warning_dialog_background);
+		DialogFragment warningDialogFragment = WarningDialogFragment.getInstance(dialogData);
+		((BaseDialog)warningDialogFragment).setDialogWatcher(this);
+		warningDialogFragment.show(getSupportFragmentManager(), WARNING_DIALOG_TAG);
 	}
 	
 	private class D3ToolTipClient extends WebViewClient{
@@ -114,4 +135,22 @@ public class TooltipActivity extends Activity {
 			
 		}
 	};
+
+	@Override
+	public void closeDialogs(String tag) {
+		if(tag.equalsIgnoreCase(WARNING_DIALOG_TAG)) {
+			DialogFragment openDialogFragment = (DialogFragment)getSupportFragmentManager().findFragmentByTag(WARNING_DIALOG_TAG);
+			if(openDialogFragment != null){
+				openDialogFragment.dismiss();
+				finish();
+			}
+		}
+	}
+
+	@Override
+	public void closeDialogsWithData(DialogType type, String tag,
+			Bundle dialogData) {
+		// TODO Auto-generated method stub
+		
+	}
 }

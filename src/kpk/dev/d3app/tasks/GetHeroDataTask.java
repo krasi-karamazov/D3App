@@ -35,15 +35,15 @@ public class GetHeroDataTask extends AsyncTask<Bundle, String, List<IProfileMode
 	@Override
 	protected List<IProfileModel> doInBackground(Bundle... params) {
 		Bundle bundle = params[0];
-		KPKLog.d("is open " + mDatabase.isOpen());
+		final List<IProfileModel> profileModels = new ArrayList<IProfileModel>();		
 		if(bundle.containsKey(HERO_ID_BUNDLE_KEY)){
-			final List<IProfileModel> profileModels = new ArrayList<IProfileModel>();
-			profileModels.add(mDatabaseProcessor.getHeroData(mDataType, params[0].getLong(HERO_ID_BUNDLE_KEY), 
-					params[0].containsKey(HERO_ID_BUNDLE_KEY)?params[0].getString(FOLLOWER_SLUG_BUNDLE_KEY):null, mDatabase));
-			return profileModels;
-		}else{
-			return null;
+			long heroId = params[0].getLong(HERO_ID_BUNDLE_KEY);
+			String followerSlug = params[0].containsKey(FOLLOWER_SLUG_BUNDLE_KEY)?params[0].getString(FOLLOWER_SLUG_BUNDLE_KEY):null;
+			IProfileModel model = mDatabaseProcessor.getHeroData(mDataType, heroId, followerSlug, mDatabase);
+			
+			profileModels.add(model);
 		}
+		return profileModels;
 	}
 	
 	@Override

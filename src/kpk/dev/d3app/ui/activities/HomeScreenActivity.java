@@ -52,6 +52,7 @@ public class HomeScreenActivity extends AbstractActivity{
 					break;
 					
 				case R.id.about_button:
+					startActivity(new Intent(HomeScreenActivity.this, AboutActivity.class));
 					break;
 			}
 		}
